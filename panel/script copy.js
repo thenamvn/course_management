@@ -1,6 +1,10 @@
 //block.js
 window.onload = function() {
     const savedToken = localStorage.getItem('token');
+  // Set the default date to today's date
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString('vi-VN'); // Format the date as dd/mm/yyyy
+  document.getElementById('date').value = formattedDate;
     if (savedToken) {
         // Verify the token with the server
         fetch('http://localhost:3000/verify-token', {
@@ -51,9 +55,6 @@ function recordAttendance() {
 function record() {
     const mon_hoc = document.getElementById("mon_hoc").value;
     const date = document.getElementById("date").value;
-    const dateObject = new Date(date);
-    const formattedDate = dateObject.toLocaleDateString('vi-VN');
-    console.log(formattedDate);
     const hocphan = document.getElementById("hocphan").value;
     if (!mon_hoc || !date || !hocphan) {
         return;
@@ -119,20 +120,19 @@ function getStudents() {
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
           checkbox.addEventListener('change', function() {
+            const time = new Date().toLocaleDateString('vi-VN');
             const headerRow = document.querySelector('#studentsTable tr');
-            const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
+            const existingHeader = Array.from(headerRow.children).find(th => th.textContent === time);
         
             if (this.checked) {
                 if (!existingHeader) {
                     const newHeader = document.createElement('th');
-                    newHeader.textContent = formattedDate;
+                    newHeader.textContent = time;
                     headerRow.appendChild(newHeader);
                 }
                 cell4.innerHTML = 'đã đi học';
-              } else {
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
-                if (!anyChecked && existingHeader) {
+            } else {
+                if (existingHeader) {
                     headerRow.removeChild(existingHeader);
                 }
                 cell4.innerHTML = '';

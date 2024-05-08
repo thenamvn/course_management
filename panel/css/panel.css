@@ -41,3 +41,7 @@ button {
 button:hover {
   background-color: #45a049;
 }
+table {
+  margin-top: 20px;
+  width: auto;
+}
