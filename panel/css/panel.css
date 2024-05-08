@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.container {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.input-field {
+  margin-bottom: 10px;
+  width: 48%;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  /*set button to center; */
+  display: block;
+  margin: 0 auto;
+
+
+}
