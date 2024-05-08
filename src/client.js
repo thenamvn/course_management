@@ -10,6 +10,16 @@ window.onload = function() {
   }
 };
 
+// JavaScript
+document.getElementById('show-password').addEventListener('change', function() {
+  const passwordInput = document.getElementById('password');
+  if (this.checked) {
+    passwordInput.type = 'text';
+  } else {
+    passwordInput.type = 'password';
+  }
+});
+
 document.getElementById('login-button').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the form from submitting
 

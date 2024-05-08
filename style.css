@@ -58,6 +58,8 @@ body {
   padding: 10px 20px;
   margin-top: 20px;
   cursor: pointer;
+  display: block;
+  margin: 0 auto;
 }
 
 .login-screen .forgot-password {

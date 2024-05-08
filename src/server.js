@@ -5,17 +5,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
-const secret_key = process.env.SECRET_KEY;
 require('dotenv').config();
 app.use(cors());
 app.use(bodyParser.json());
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  port: process.env.DB_PORT
+  host: 'localhost',
+  user: 'ntnhacker1',
+  password: 'Nam@2182004',
+  database: 'webdatabase',
+  port: 3306
 });
 
 app.post('/login', (req, res) => {
@@ -28,7 +27,7 @@ app.post('/login', (req, res) => {
     if (results.length > 0) {
       if (password === results[0].password) {
         // Create a token
-        const token = jwt.sign({ username: username },secret_key, { expiresIn: '15m' });
+        const token = jwt.sign({ username: username }, 'thenamvn', { expiresIn: '15m' });
     
         // Send success message along with the token
         res.json({ success: true, message: 'Logged in successfully', token: token });
@@ -48,7 +47,7 @@ app.post('/verify-token', (req, res) => {
     return res.sendStatus(401); // If there's no token, return 401 (Unauthorized)
   }
 
-  jwt.verify(token,secret_key, (err, user) => {
+  jwt.verify(token, 'thenamvn', (err, user) => {
     if (err) {
       return res.json({ success: false, message: 'Token not valid' }); // If the token is not valid, return an error message
     }
