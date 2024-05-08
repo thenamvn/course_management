@@ -8,6 +8,7 @@ body {
 }
 
 form {
+  border-radius: 10px;
   border: 1px solid #ccc;
   padding: 20px;
   background-color: white;
@@ -90,7 +91,7 @@ form {
 .login-screen .forgot-password {
   color: #4CAF50;
   text-decoration: underline;
-  margin-top: 20px;
+  margin-top: -10px;
   cursor: pointer;
   display: block;
   text-align: center;
