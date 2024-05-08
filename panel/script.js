@@ -55,7 +55,7 @@ function recordAttendance() {
 function record() {
     const mon_hoc = document.getElementById("mon_hoc").value;
     const date = document.getElementById("date").value;
-    const sinhvien_khoa = document.getElementById("sinhvien_khoa").value;
+    const sinhvien_khoa = document.getElementById("hocphan").value;
     if (!mon_hoc || !date || !sinhvien_khoa) {
         return;
     }else{
