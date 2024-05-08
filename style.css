@@ -1,14 +1,20 @@
+/* Responsive CSS Code */
+
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-
+/* Header Styles */
 .header {
   height: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f0f0f0; /* Example background color */
 }
 
 .profile-picture {
@@ -25,11 +31,13 @@ body {
   object-fit: cover;
 }
 
+/* Login Screen Styles */
 .login-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
+  padding: 0 20px; /* Example padding */
 }
 
 .login-screen label {
@@ -38,12 +46,14 @@ body {
 
 .login-screen input[type="text"],
 .login-screen input[type="password"] {
-  width: 300px;
+  width: 100%; /* Full width input fields */
+  max-width: 300px; /* Maximum width for input fields */
   height: 30px;
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;
   margin-top: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .login-screen input[type="checkbox"] {
@@ -67,4 +77,25 @@ body {
   text-decoration: underline;
   margin-top: 20px;
   cursor: pointer;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  .header {
+    height: 80px;
+  }
+
+  .profile-picture {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-screen {
+    margin-top: 30px;
+  }
+
+  .login-screen input[type="text"],
+  .login-screen input[type="password"] {
+    max-width: 250px;
+  }
 }
