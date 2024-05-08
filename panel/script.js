@@ -81,6 +81,10 @@ function getListStudents() {
 }
 
 function getStudents() {
+    // Remove the existing table if it exists
+    const existingTable = document.getElementById('studentsTable');
+    if (existingTable) existingTable.remove();
+
     fetch('http://localhost:3000/get-students', {
         method: 'POST',
         headers: {
@@ -91,7 +95,6 @@ function getStudents() {
     .then(data => {
         const parentElement = document.createElement('div'); // Create a parent element
         parentElement.innerHTML = `
-            <h2>Students</h2>
             <table id="studentsTable">
               <tr>
                 <th>ID</th>
