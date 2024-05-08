@@ -20,10 +20,6 @@ window.onload = function() {
                   // Hide the splash screen and show the main content
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('container').style.display = 'flex';
-            setTimeout(function(){
-              alert("Hết thời gian truy cập 15 phút, vui lòng đăng nhập lại!");
-              window.location.href = '../index.html';
-            }, 900000); // 15 phút
           } else {
             // If the token is not valid, redirect to the login page
             window.location.href = './404.html';
@@ -57,23 +53,73 @@ function recordAttendance() {
     })
 }
 function record() {
-    const studentName = document.getElementById("studentName").value;
-    const status = document.getElementById("status").value;
+    const mon_hoc = document.getElementById("mon_hoc").value;
     const date = document.getElementById("date").value;
-    const course = document.getElementById("courseName").value;
-    if (!studentName || !status || !date || !course) {
+    const sinhvien_khoa = document.getElementById("sinhvien_khoa").value;
+    if (!mon_hoc || !date || !sinhvien_khoa) {
         return;
     }else{
-        const table = document.getElementById("attendanceTable");
-        const row = table.insertRow(-1);
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        const cell3 = row.insertCell(2);
-        const cell4 = row.insertCell(3);
+      getListStudents();
+}
+function getListStudents() {
+    fetch('http://localhost:3000/verify-token', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token'), // Send the token in the Authorization header
+      },
+  })
+  .then(response => response.json())
+  .then(data => {
+      if (data.success) {
+          getStudents();
+      } else {
+          alert("Xác thực thất bại, vui lòng đăng nhập lại!");
+          window.location.href = '../index.html';
+      }
+  })
+}
 
-        cell1.innerHTML = studentName;
-        cell2.innerHTML = status;
-        cell3.innerHTML = date;
-        cell4.innerHTML = course;
-    }
+function getStudents() {
+    fetch('http://localhost:3000/get-students', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        const parentElement = document.createElement('div'); // Create a parent element
+        parentElement.innerHTML = `
+            <h2>Students</h2>
+            <table id="studentsTable">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Khoá</th>
+                <th>Đi học</th>
+              </tr>
+            </table>
+        `;
+        const table = parentElement.querySelector("#studentsTable"); // Get the table element from the parent element
+
+        data.forEach(student => {
+            const row = table.insertRow(-1);
+            const cell0 = row.insertCell(0);
+            const cell1 = row.insertCell(1);
+            const cell2 = row.insertCell(2);
+            const cell3 = row.insertCell(3);
+
+            cell0.innerHTML = student.id;
+            cell1.innerHTML = student.name;
+            cell2.innerHTML = student.sinhvien_khoa;
+            cell3.innerHTML = '<input type="checkbox" />';
+        });
+
+        document.body.appendChild(parentElement); // Append the parent element to the document body
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
 }

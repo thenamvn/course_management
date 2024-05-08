@@ -27,7 +27,7 @@ app.post('/login', (req, res) => {
     if (results.length > 0) {
       if (password === results[0].password) {
         // Create a token
-        const token = jwt.sign({ username: username }, 'thenamvn', { expiresIn: '15m' });
+        const token = jwt.sign({ username: username }, 'thenamvn', { expiresIn: '1d' });
     
         // Send success message along with the token
         res.json({ success: true, message: 'Logged in successfully', token: token });
@@ -56,6 +56,13 @@ app.post('/verify-token', (req, res) => {
   });
 });
 
+app.post('/get-students', (req, res) => {
+  pool.query('SELECT * FROM sinhvien', function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+}
+);
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

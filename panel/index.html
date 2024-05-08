@@ -10,42 +10,28 @@
     </div>
     <div class="container" id = "container">
       <div class="input-field">
-        <label for="courseName">Môn học:</label>
-        <select id="courseName" name="courseName" required>
+        <label for="sinhvien_khoa">Sinh viên khoá:</label>
+        <select id="sinhvien_khoa" name="courseName" required>
           <option value="" disabled selected>Please Select</option>
-          <option value="Math">Math</option>
-          <option value="Science">Science</option>
-          <option value="History">History</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
         </select>
       </div>
       <div class="input-field">
-        <label for="studentName">Sinh viên:</label>
-        <input type="text" id="studentName" name="studentName" placeholder="Họ và tên" required>
-      </div>
-      <div class="input-field">
-        <label for="status">Trạng thái:</label>
-        <select id="status" name="status" required>
+        <label for="mon_hoc">Môn học:</label>
+        <select id="mon_hoc" name="status" required>
           <option value="" disabled>Lựa chọn</option>
-          <option value="Đi học" selected>Đi học</option>
-          <option value="Nghỉ học">Nghỉ học</option>
+          <option value="Lịch sử Đảng" selected>Lịch sử Đảng</option>
+          <option value="Mạch logic">Mạch logic</option>
         </select>
       </div>
       <div class="input-field">
         <label for="date">Ngày:</label>
         <input type="text" id="date" name="date" value="" readonly>
       </div>
-      <button onclick="recordAttendance()">Điểm danh</button>
+      <button onclick="recordAttendance()">Lấy danh sách</button>
     </div>
     <script src="./script.js"></script>
-
-    <h2>Attendance Records</h2>
-    <table id="attendanceTable">
-      <tr>
-        <th>Sinh viên</th>
-        <th>Trạng thái</th>
-        <th>Thời gian</th>
-        <th>Môn học</th>
-      </tr>
-    </table>
   </body>
 </html>
