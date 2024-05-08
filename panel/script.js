@@ -107,22 +107,44 @@ function getStudents() {
         const table = parentElement.querySelector("#studentsTable"); // Get the table element from the parent element
 
         data.forEach(student => {
-            const row = table.insertRow(-1);
-            const cell0 = row.insertCell(0);
-            const cell1 = row.insertCell(1);
-            const cell2 = row.insertCell(2);
-            const cell3 = row.insertCell(3);
+          const row = table.insertRow(-1);
+          const cell0 = row.insertCell(0);
+          const cell1 = row.insertCell(1);
+          const cell2 = row.insertCell(2);
+          const cell3 = row.insertCell(3);
+          const cell4 = row.insertCell(4);
 
-            cell0.innerHTML = student.id;
-            cell1.innerHTML = student.name;
-            cell2.innerHTML = student.sinhvien_khoa;
-            cell3.innerHTML = '<input type="checkbox" />';
+          cell0.innerHTML = student.id;
+          cell1.innerHTML = student.name;
+          cell2.innerHTML = student.sinhvien_khoa;
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.addEventListener('change', function() {
+            const time = new Date().toLocaleDateString('vi-VN');
+            const headerRow = document.querySelector('#studentsTable tr');
+            const existingHeader = Array.from(headerRow.children).find(th => th.textContent === time);
+        
+            if (this.checked) {
+                if (!existingHeader) {
+                    const newHeader = document.createElement('th');
+                    newHeader.textContent = time;
+                    headerRow.appendChild(newHeader);
+                }
+                cell4.innerHTML = 'đã đi học';
+            } else {
+                if (existingHeader) {
+                    headerRow.removeChild(existingHeader);
+                }
+                cell4.innerHTML = '';
+            }
         });
+          cell3.appendChild(checkbox);
+      });
 
-        document.body.appendChild(parentElement); // Append the parent element to the document body
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+      document.body.appendChild(parentElement); // Append the parent element to the document body
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
 }
 }
