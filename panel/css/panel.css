@@ -37,6 +37,7 @@ button {
   /*set button to center; */
   display: block;
   margin: 0 auto;
-
-
+}
+button:hover {
+  background-color: #45a049;
 }

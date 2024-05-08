@@ -7,6 +7,16 @@ body {
   padding: 0;
 }
 
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: white;
+  width: 100%; /* Full width form */
+  max-width: 300px; /* Maximum width for form */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Center the form */
+}
+
 /* Header Styles */
 .header {
   height: 100px;
@@ -61,7 +71,7 @@ body {
 }
 
 .login-screen .login-button {
-  background-color: green;
+  background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,33 +79,19 @@ body {
   margin-top: 20px;
   cursor: pointer;
   display: block;
-  margin: 20px auto; /* Center the button */
+  margin: 10px auto; /* Center the button */
+}
+
+/* Button Hover Effect */
+.login-screen .login-button:hover {
+  background-color: #45a049;
 }
 
 .login-screen .forgot-password {
-  color: blue;
+  color: #4CAF50;
   text-decoration: underline;
   margin-top: 20px;
   cursor: pointer;
-}
-
-/* Responsive Styles */
-@media only screen and (max-width: 600px) {
-  .header {
-    height: 80px;
-  }
-
-  .profile-picture {
-    width: 80px;
-    height: 80px;
-  }
-
-  .login-screen {
-    margin-top: 30px;
-  }
-
-  .login-screen input[type="text"],
-  .login-screen input[type="password"] {
-    max-width: 250px;
-  }
+  display: block;
+  text-align: center;
 }
