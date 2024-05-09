@@ -1,4 +1,4 @@
-I want to build an SQL database for student management, including courses, course components, student lists for each course component, and attendance records. Example schema for database:
+Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh
 <pre>
 <code>
 CREATE TABLE Courses (
