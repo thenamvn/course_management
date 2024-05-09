@@ -71,6 +71,11 @@ h2 {
   text-align: center;
 }
 
+label {
+  font-weight: bold;
+  font-size: auto;
+}
+
 /* Responsive Styles */
 @media only screen and (max-width: 600px) {
   .input-field {
