@@ -40,11 +40,12 @@ Query to select all students in a specific course component:
 
 <pre>
 <code>
+sql
 SELECT s.student_id, s.student_name
 FROM Students s
 JOIN ComponentStudents cs ON s.student_id = cs.student_id
 JOIN CourseComponents cc ON cs.component_id = cc.component_id
-WHERE cc.component_id = <component_id>;
+WHERE cc.component_id = component_id;
 </code>
 </pre>
 
