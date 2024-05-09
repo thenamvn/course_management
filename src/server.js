@@ -28,7 +28,7 @@ app.post('/login', (req, res) => {
     if (results.length > 0) {
       if (password === results[0].password) {
         // Create a token
-        const token = jwt.sign({ username: username }, 'thenamvn', { expiresIn: '1d' });
+        const token = jwt.sign({ username: username },process.env.SECRET_KEY, { expiresIn: '1d' });
     
         // Send success message along with the token
         res.json({ success: true, message: 'Logged in successfully', token: token });
@@ -48,7 +48,7 @@ app.post('/verify-token', (req, res) => {
     return res.sendStatus(401); // If there's no token, return 401 (Unauthorized)
   }
 
-  jwt.verify(token, 'thenamvn', (err, user) => {
+  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
     if (err) {
       return res.json({ success: false, message: 'Token not valid' }); // If the token is not valid, return an error message
     }
