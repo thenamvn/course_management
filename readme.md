@@ -7,10 +7,12 @@ CREATE TABLE Courses (
 );
 
 CREATE TABLE CourseComponents (
-    component_id INT PRIMARY KEY,
+    component_id INT PRIMARY KEY AUTO_INCREMENT,
     course_id INT,
+    component_sequence INT NOT NULL,
     component_name VARCHAR(50) NOT NULL,
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id),
+    UNIQUE KEY (course_id, component_sequence)
 );
 
 CREATE TABLE Students (
@@ -21,11 +23,13 @@ CREATE TABLE Students (
 CREATE TABLE ComponentStudents (
     component_id INT,
     student_id INT,
-    PRIMARY KEY (component_id, student_id),
+    course_id INT,
+    PRIMARY KEY (component_id, student_id, course_id),
+    UNIQUE KEY (course_id, student_id),
     FOREIGN KEY (component_id) REFERENCES CourseComponents(component_id),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
-
 CREATE TABLE Attendance (
     attendance_id INT PRIMARY KEY,
     component_id INT,
@@ -40,12 +44,11 @@ Query to select all students in a specific course component:
 
 <pre>
 <code>
-sql
+-- lấy danh sách các sinh viên đang học môn "CSE3034" và tham gia vào học phần số 1
 SELECT s.student_id, s.student_name
 FROM Students s
-JOIN ComponentStudents cs ON s.student_id = cs.student_id
-JOIN CourseComponents cc ON cs.component_id = cc.component_id
-WHERE cc.component_id = component_id;
+INNER JOIN ComponentStudents cs ON s.student_id = cs.student_id
+WHERE cs.course_id = 2 AND cs.component_id = 1;
 </code>
 </pre>
 
