@@ -1,5 +1,6 @@
 // server.js
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const express = require('express');
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
