@@ -47,3 +47,6 @@ JOIN CourseComponents cc ON cs.component_id = cc.component_id
 WHERE cc.component_id = <component_id>;
 </code>
 </pre>
+![image](https://github.com/thenamvn/WebDatabase/assets/57611937/0e184772-4fc2-4192-afd2-e82a048934e2)
+![er_1715264734997](https://github.com/thenamvn/WebDatabase/assets/57611937/e9bd6c2f-cb25-480f-bb7d-f6f8f13c9354)
+
