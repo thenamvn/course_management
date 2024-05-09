@@ -135,14 +135,17 @@ document.getElementById('create_day').addEventListener('click', function() {
           const newCell = row.insertCell(-1);
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
+          const label = document.createElement('label');
+          label.textContent = 'Nghỉ học';
           checkbox.addEventListener('change', function() {
               if (this.checked) {
-                  newCell.textContent = 'Đã đi học';
+                  label.textContent = 'Đã đi học';
               } else {
-                  newCell.textContent = '';
+                  label.textContent = 'Nghỉ học';
               }
           });
           newCell.appendChild(checkbox);
+          newCell.appendChild(label)
       });
   }
 });
