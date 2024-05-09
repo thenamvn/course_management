@@ -71,6 +71,19 @@ h2 {
   text-align: center;
 }
 
+#splash-screen {
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 9999; /* High z-index so it appears above other elements */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
 label {
   font-weight: bold;
 }
