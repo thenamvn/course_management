@@ -50,12 +50,8 @@ function recordAttendance() {
 }
 function record() {
     const mon_hoc = document.getElementById("mon_hoc").value;
-    const date = document.getElementById("date").value;
-    const dateObject = new Date(date);
-    const formattedDate = dateObject.toLocaleDateString('vi-VN');
-    console.log(formattedDate);
     const hocphan = document.getElementById("hocphan").value;
-    if (!mon_hoc || !date || !hocphan) {
+    if (!mon_hoc || !hocphan) {
         return;
     }else{
       getListStudents();
@@ -99,7 +95,6 @@ function getStudents() {
                 <th>ID</th>
                 <th>Name</th>
                 <th>Khoá</th>
-                <th>Đi học</th>
               </tr>
             </table>
         `;
@@ -110,41 +105,42 @@ function getStudents() {
           const cell0 = row.insertCell(0);
           const cell1 = row.insertCell(1);
           const cell2 = row.insertCell(2);
-          const cell3 = row.insertCell(3);
-          const cell4 = row.insertCell(4);
 
           cell0.innerHTML = student.id;
           cell1.innerHTML = student.name;
           cell2.innerHTML = student.sinhvien_khoa;
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.addEventListener('change', function() {
-            const headerRow = document.querySelector('#studentsTable tr');
-            const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
-        
-            if (this.checked) {
-                if (!existingHeader) {
-                    const newHeader = document.createElement('th');
-                    newHeader.textContent = formattedDate;
-                    headerRow.appendChild(newHeader);
-                }
-                cell4.innerHTML = 'đã đi học';
-              } else {
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                const anyChecked = Array.from(checkboxes).some(cb => cb.checked);
-                if (!anyChecked && existingHeader) {
-                    headerRow.removeChild(existingHeader);
-                }
-                cell4.innerHTML = '';
-            }
-        });
-          cell3.appendChild(checkbox);
       });
-
       document.body.appendChild(parentElement); // Append the parent element to the document body
   })
   .catch((error) => {
       console.error('Error:', error);
   });
 }
+document.getElementById('create_day').addEventListener('click', function() {
+  const dateInput = document.getElementById('date').value;
+  const formattedDate = new Date(dateInput).toLocaleDateString('vi-VN');
+  const headerRow = document.querySelector('#studentsTable tr');
+  const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
+  if (!existingHeader) {
+      const newHeader = document.createElement('th');
+      newHeader.textContent = formattedDate;
+      headerRow.appendChild(newHeader);
+
+      // Add a column with a checkbox to each row
+      const rows = Array.from(document.querySelectorAll('#studentsTable tr')).slice(1); // Exclude the header row
+      rows.forEach(row => {
+          const newCell = row.insertCell(-1);
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.addEventListener('change', function() {
+              if (this.checked) {
+                  newCell.textContent = 'Đã đi học';
+              } else {
+                  newCell.textContent = '';
+              }
+          });
+          newCell.appendChild(checkbox);
+      });
+  }
+});
 }

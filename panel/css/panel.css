@@ -26,17 +26,16 @@ tr:nth-child(even) {
 .input-field {
   margin-bottom: 10px;
   width: 48%;
+  display: flex;
 }
 button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
-  /*set button to center; */
-  display: block;
-  margin: 0 auto;
+  margin-left: 10px;
 }
 button:hover {
   background-color: #45a049;
