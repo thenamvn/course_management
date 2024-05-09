@@ -1,4 +1,4 @@
-I want to build an SQL database for student management, including courses, course components, student lists for each course component, and attendance records. Below is an example schema for your database:
+I want to build an SQL database for student management, including courses, course components, student lists for each course component, and attendance records. Example schema for database:
 <pre>
 <code>
 CREATE TABLE Courses (
@@ -36,7 +36,7 @@ CREATE TABLE Attendance (
 );
 </code>
 </pre>
-With this schema in place, you can perform various SQL queries to manage student data. Here is a basic example of a query to select all students in a specific course component:
+Query to select all students in a specific course component:
 
 <pre>
 <code>
