@@ -1,6 +1,9 @@
 //block.js
 window.onload = function() {
     const savedToken = localStorage.getItem('token');
+    const today = new Date();
+    const formattedDate = today.toISOString().substring(0, 10); // Format the date as 'yyyy-mm-dd'
+    document.getElementById('date').value = formattedDate;
     if (savedToken) {
         // Verify the token with the server
         fetch('http://localhost:3000/verify-token', {

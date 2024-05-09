@@ -22,6 +22,11 @@ tr:nth-child(even) {
   display: none;
   flex-wrap: wrap;
   justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.container:focus {
+    border-color: #aaa;
 }
 .input-field {
   margin-bottom: 10px;
