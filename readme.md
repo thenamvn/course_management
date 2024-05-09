@@ -43,6 +43,62 @@ CREATE TABLE Attendance (
 </code>
 </pre>
 *Query:
+<pre>
+<code>
+-- danh sách tổng toàn bộ các sinh viên
+insert into students (student_id, student_name) values (1, 'Herman Simons');
+insert into students (student_id, student_name) values (2, 'Ravid Rouf');
+insert into students (student_id, student_name) values (3, 'Dukie Boulter');
+insert into students (student_id, student_name) values (4, 'Kendell Minshall');
+insert into students (student_id, student_name) values (5, 'Goldi Wallhead');
+insert into students (student_id, student_name) values (6, 'Iris Roughey');
+insert into students (student_id, student_name) values (7, 'Wendall Louca');
+insert into students (student_id, student_name) values (8, 'Jessalin Scrase');
+insert into students (student_id, student_name) values (9, 'Maud Dolbey');
+insert into students (student_id, student_name) values (10, 'Ira Nunn');
+
+-- Courses (tạo 1 môn học có tên là cse3033 với id 1)
+INSERT INTO Courses (course_id, course_name) VALUES (1, 'Mạch logic');
+INSERT INTO Courses (course_id, course_name) VALUES (2, 'Lịch sử Đảng');
+
+-- CourseComponents (tạo ra các học phần 1,2,3 cho môn có course_id 1)
+INSERT INTO CourseComponents (course_id, component_sequence, component_name)
+VALUES
+    (1, 1, 'Học phần 1 khóa học 1'),
+    (1, 2, 'Học phần 2 khóa học 1'),
+    (1, 3, 'Học phần 3 khóa học 1'),
+    (2, 1, 'Học phần 1 khóa học 2'),
+    (2, 2, 'Học phần 2 khóa học 2'),
+    (2, 3, 'Học phần 3 khóa học 2');
+
+ -- thêm 5 sv vô môn 1 học phần 1
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 1);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 2);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 3);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 4);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 5);
+-- 5 sv vô hp 2
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 2, 6);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 2, 7);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 2, 8);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 2, 9);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 2, 10);
+
+ -- thêm 5 sv vô môn 2 học phần 1
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 1, 1);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 1, 2);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 1, 3);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 1, 4);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 1, 5);
+
+-- 5 sv môn 2 hp2
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 2, 6);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 2, 7);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 2, 8);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 2, 9);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (2, 2, 10);
+</code>
+</pre>
 
 <pre>
 <code>
