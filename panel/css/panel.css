@@ -1,38 +1,56 @@
+/* Responsive CSS Code */
+
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px; /* Add margin to the table */
 }
+
 th,
 td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
 th {
   background-color: #4CAF50;
   color: white;
 }
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
+/* Container Styles */
 .container {
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   border: 1px solid #ccc;
   padding: 10px;
+  margin-top: 20px; /* Add margin to the container */
 }
+
 .container:focus {
-    border-color: #aaa;
+  border-color: #aaa;
 }
+
 .input-field {
   margin-bottom: 10px;
-  width: 48%;
+  width: 100%; /* Full width input fields */
+  max-width: 48%; /* Maximum width for input fields */
   display: flex;
 }
+
 button {
   background-color: #4CAF50;
   color: white;
@@ -42,10 +60,14 @@ button {
   cursor: pointer;
   margin-left: 10px;
 }
+
 button:hover {
   background-color: #45a049;
 }
-table {
-  margin-top: 20px;
-  width: auto;
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  .input-field {
+    max-width: 100%; /* Adjust input field width for smaller screens */
+  }
 }
