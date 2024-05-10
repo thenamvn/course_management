@@ -16,11 +16,13 @@ VALUES
 SELECT
     s.student_name,
     s.student_id,
+    s.student_year,
     a.attendance_date
 FROM
     Attendance a
-    JOIN ComponentStudents cs ON a.component_id = cs.component_id AND a.course_id = cs.course_id AND a.student_id = cs.student_id
-    JOIN Students s ON cs.student_id = s.student_id
+    JOIN Students s ON a.student_id = s.student_id -- Thêm liên kết với bảng Students
 WHERE
     a.course_id = 2
     AND a.component_id = 1;
+
+
