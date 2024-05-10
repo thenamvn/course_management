@@ -1,1 +1,1 @@
-DROP TABLE `webdatabase`.`componentstudents`, `webdatabase`.`courses`, `webdatabase`.`coursecomponents`, `webdatabase`.`attendance`, `webdatabase`.`students`;
+DROP TABLE IF EXISTS `webdatabase`.`componentstudents`, `webdatabase`.`courses`, `webdatabase`.`coursecomponents`, `webdatabase`.`attendance`, `webdatabase`.`students`;

@@ -16,4 +16,4 @@ SELECT a.student_id, s.student_name
 FROM Attendance a
 JOIN Students s ON a.student_id = s.student_id
 WHERE a.component_id = 1 -- Chọn học phần số 1
-AND a.course_id = 2; -- Chọn môn học số 1
+AND a.course_id = 1; -- Chọn môn học số 1
