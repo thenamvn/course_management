@@ -13,7 +13,8 @@ CREATE TABLE CourseComponents (
 
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
-    student_name VARCHAR(50) NOT NULL
+    student_name VARCHAR(50) NOT NULL,
+    student_year VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE ComponentStudents (

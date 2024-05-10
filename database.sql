@@ -13,7 +13,8 @@ CREATE TABLE CourseComponents (
 
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
-    student_name VARCHAR(50) NOT NULL
+    student_name VARCHAR(50) NOT NULL,
+    student_year VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE ComponentStudents (
@@ -36,18 +37,18 @@ CREATE TABLE Attendance (
     FOREIGN KEY (student_id) REFERENCES Students(student_id)
 );
 -- Danh sách tổng toàn bộ các sinh viên
-INSERT INTO students (student_id, student_name) 
+INSERT INTO students (student_id, student_name, student_year) 
 VALUES 
-(1, 'Herman Simons'),
-(2, 'Ravid Rouf'),
-(3, 'Dukie Boulter'),
-(4, 'Kendell Minshall'),
-(5, 'Goldi Wallhead'),
-(6, 'Iris Roughey'),
-(7, 'Wendall Louca'),
-(8, 'Jessalin Scrase'),
-(9, 'Maud Dolbey'),
-(10, 'Ira Nunn');
+(1, 'Herman Simons', 2022),
+(2, 'Ravid Rouf', 2022),
+(3, 'Dukie Boulter', 2022),
+(4, 'Kendell Minshall', 2022),
+(5, 'Goldi Wallhead', 2022),
+(6, 'Iris Roughey', 2022),
+(7, 'Wendall Louca', 2022),
+(8, 'Jessalin Scrase', 2022),
+(9, 'Maud Dolbey', 2022),
+(10, 'Ira Nunn', 2022);
 
 -- Courses (tạo 1 môn học có tên là cse3033 với id 1)
 INSERT INTO Courses (course_id, course_name) VALUES (1, 'Mạch logic');
