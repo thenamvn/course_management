@@ -68,7 +68,7 @@ function fetchCourseComponents() {
   .catch(error => console.error('Error:', error));
 }
 
-function recordAttendance() {
+function getListStudents() {
     fetch('http://localhost:3000/verify-token', {
         method: 'POST',
         headers: {
