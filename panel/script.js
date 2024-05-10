@@ -19,6 +19,22 @@ window.onload = function() {
                   // Hide the splash screen and show the main content
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('container').style.display = 'flex';
+            fetch('http://localhost:3000/courses', {
+              method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+              const select = document.getElementById('mon_hoc');
+              data.forEach(course => {
+                const option = document.createElement('option');
+                option.value = course.course_id;
+                option.text = course.course_name;
+                select.appendChild(option);
+              });
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
           } else {
             // If the token is not valid, redirect to the login page
             window.location.href = './404.html';

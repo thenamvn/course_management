@@ -63,6 +63,14 @@ app.get('/get-students', (req, res) => {
     res.json(results);
   });
 });
+
+app.get('/courses', (req, res) => {
+  pool.query('SELECT * FROM courses', function(error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
