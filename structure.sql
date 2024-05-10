@@ -28,12 +28,12 @@ CREATE TABLE ComponentStudents (
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
 CREATE TABLE Attendance (
-    attendance_id INT PRIMARY KEY,
     component_id INT,
     student_id INT,
     attendance_date DATE NOT NULL,
     course_id INT,
     FOREIGN KEY (component_id) REFERENCES CourseComponents(component_id),
     FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id),
+    PRIMARY KEY (course_id, component_id, student_id, attendance_date)
 );
