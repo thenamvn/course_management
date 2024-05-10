@@ -13,6 +13,9 @@ table {
   border-collapse: collapse;
   margin-top: 20px; /* Add margin to the table */
 }
+table th, table td {
+  text-align: center;
+}
 
 th,
 td {
