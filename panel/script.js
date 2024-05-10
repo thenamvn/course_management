@@ -84,10 +84,7 @@ function getStudents() {
     if (existingTable) existingTable.remove();
 
     fetch('http://localhost:3000/get-students', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
+        method: 'GET',
     })
     .then(response => response.json())
     .then(data => {

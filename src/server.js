@@ -62,8 +62,7 @@ app.post('/get-students', (req, res) => {
     if (error) throw error;
     res.json(results);
   });
-}
-);
+});
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
