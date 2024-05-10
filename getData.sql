@@ -12,8 +12,14 @@ VALUES
 (2, 1, 1, '2024-05-10');
 
 -- lấy thông tin ai đã điểm danh
-SELECT a.student_id, s.student_name
-FROM Attendance a
-JOIN Students s ON a.student_id = s.student_id
-WHERE a.course_id = 1 -- Chọn môn 1
-AND a.component_id = 1; -- Chọn họ phần 1
+SELECT
+    s.student_name,
+    s.student_id,
+    a.attendance_date
+FROM
+    Attendance a
+    JOIN ComponentStudents cs ON a.component_id = cs.component_id AND a.course_id = cs.course_id AND a.student_id = cs.student_id
+    JOIN Students s ON cs.student_id = s.student_id
+WHERE
+    a.course_id = 1
+    AND a.component_id = 1;
