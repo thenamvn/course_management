@@ -49,6 +49,25 @@ window.onload = function() {
       }
 };
 //script.js
+function fetchCourseComponents() {
+  const courseId = document.getElementById('mon_hoc').value;
+  fetch(`http://localhost:3000/course-components?course_id=${courseId}`, {
+    method: 'GET',
+  })
+  .then(response => response.json())
+  .then(data => {
+    const select = document.getElementById('hocphan');
+    select.innerHTML = ''; // Clear the select element
+    data.forEach(component => {
+      const option = document.createElement('option');
+      option.value = component.component_id;
+      option.text = component.component_name;
+      select.appendChild(option);
+    });
+  })
+  .catch(error => console.error('Error:', error));
+}
+
 function recordAttendance() {
     fetch('http://localhost:3000/verify-token', {
         method: 'POST',
@@ -73,9 +92,9 @@ function record() {
     if (!mon_hoc || !hocphan) {
         return;
     }else{
-      getListStudents();
+      getListStudents(mon_hoc, hocphan);
 }
-function getListStudents() {
+function getListStudents(mon_hoc, hocphan) {
     fetch('http://localhost:3000/verify-token', {
       method: 'POST',
       headers: {
@@ -86,7 +105,7 @@ function getListStudents() {
   .then(response => response.json())
   .then(data => {
       if (data.success) {
-          getStudents();
+          getStudents(mon_hoc, hocphan);
       } else {
           alert("Xác thực thất bại, vui lòng đăng nhập lại!");
           window.location.href = '../index.html';
@@ -94,44 +113,45 @@ function getListStudents() {
   })
 }
 
-function getStudents() {
-    // Remove the existing table if it exists
-    const existingTable = document.getElementById('studentsTable');
-    if (existingTable) existingTable.remove();
+function getStudents(courseId, componentId) {
+  // Remove the existing table if it exists
+  const existingTable = document.getElementById('studentsTable');
+  if (existingTable) existingTable.remove();
 
-    fetch('http://localhost:3000/get-students', {
-        method: 'GET',
-    })
-    .then(response => response.json())
-    .then(data => {
-        const parentElement = document.createElement('div'); // Create a parent element
-        parentElement.innerHTML = `
-            <table id="studentsTable">
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Khoá</th>
-              </tr>
-            </table>
-        `;
-        const table = parentElement.querySelector("#studentsTable"); // Get the table element from the parent element
-
-        data.forEach(student => {
-          const row = table.insertRow(-1);
-          const cell0 = row.insertCell(0);
-          const cell1 = row.insertCell(1);
-          const cell2 = row.insertCell(2);
-
-          cell0.innerHTML = student.id;
-          cell1.innerHTML = student.name;
-          cell2.innerHTML = student.sinhvien_khoa;
-      });
-      document.body.appendChild(parentElement); // Append the parent element to the document body
+  fetch(`http://localhost:3000/get-students?course_id=${courseId}&component_id=${componentId}`, {
+      method: 'GET',
   })
-  .catch((error) => {
-      console.error('Error:', error);
-  });
+  .then(response => response.json())
+  .then(data => {
+      const parentElement = document.createElement('div'); // Create a parent element
+      parentElement.innerHTML = `
+          <table id="studentsTable">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Khoá</th>
+            </tr>
+          </table>
+      `;
+      const table = parentElement.querySelector("#studentsTable"); // Get the table element from the parent element
+
+      data.forEach(student => {
+        const row = table.insertRow(-1);
+        const cell0 = row.insertCell(0);
+        const cell1 = row.insertCell(1);
+        const cell2 = row.insertCell(2);
+
+        cell0.innerHTML = student.student_id;
+        cell1.innerHTML = student.student_name;
+        cell2.innerHTML = student.student_year;
+    });
+    document.body.appendChild(parentElement); // Append the parent element to the document body
+})
+.catch((error) => {
+    console.error('Error:', error);
+});
 }
+
 document.getElementById('create_day').addEventListener('click', function() {
   const dateInput = document.getElementById('date').value;
   const formattedDate = new Date(dateInput).toLocaleDateString('vi-VN');

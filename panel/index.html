@@ -13,16 +13,13 @@
         <label for="mon_hoc">Môn học:</label>
         <select id="mon_hoc" name="status" required>
         </select>
-        <button id = "diemdanh" onclick="recordAttendance()">Lấy danh sách</button>
+        <button id = "diemdanh" onclick="fetchCourseComponents()">Thông tin học phần</button>
       </div>
       <div class="input-field">
         <label for="hocphan">Học phần:</label>
         <select id="hocphan" name="courseName" required>
-          <option value="" disabled>Please Select</option>
-          <option value="1" selected>1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
         </select>
+        <button id = "diemdanh" onclick="recordAttendance()">Lấy danh sách</button>
       </div>
       <div class="input-field">
         <label for="date">Ngày:</label>
