@@ -98,93 +98,114 @@ function getListStudents() {
         `;
         const table = parentElement.querySelector("#studentsTable");
 
-        data.forEach(student => {
-          const row = table.insertRow(-1);
-          const cell0 = row.insertCell(0);
-          const cell1 = row.insertCell(1);
-          const cell2 = row.insertCell(2);
+        // Get all unique attendance dates
+        const attendanceDates = [...new Set(data.flatMap(record => record.attendanceDates))].sort();
 
-          cell0.innerHTML = student.student_id;
-          cell1.innerHTML = student.student_name;
-          cell2.innerHTML = student.student_year;
+        // Add attendance dates to header row
+        const headerRow = table.querySelector('tr');
+        attendanceDates.forEach(date => {
+          const formattedDate = new Date(date).toLocaleDateString('vi-VN');
+          const newHeader = document.createElement('th');
+          newHeader.textContent = formattedDate;
+          headerRow.appendChild(newHeader);
+        });
+
+        data.forEach(record => {
+          const currentRow = table.insertRow(-1);
+          const cell0 = currentRow.insertCell(0);
+          const cell1 = currentRow.insertCell(1);
+          const cell2 = currentRow.insertCell(2);
+          cell0.innerHTML = record.student_id;
+          cell1.innerHTML = record.student_name;
+          cell2.innerHTML = record.student_year;
+
+          attendanceDates.forEach(date => {
+            const cell = currentRow.insertCell(-1);
+            if (record.attendanceDates.includes(date)) {
+              cell.innerHTML = record.attended ? 'Đã đi học' : 'Vắng';
+            } else {
+              cell.innerHTML = 'Vắng';
+            }
+          });
         });
         document.body.appendChild(parentElement);
       })
       .catch(error => console.error('Error:', error));
   });
 
-  document.getElementById('create_day').addEventListener('click', function() {
-    const dateInput = document.getElementById('date').value;
-    const formattedDate = new Date(dateInput).toLocaleDateString('vi-VN');
-    const headerRow = document.querySelector('#studentsTable tr');
-    const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
-    if (!existingHeader) {
-        const newHeader = document.createElement('th');
-        newHeader.textContent = formattedDate;
-        headerRow.appendChild(newHeader);
-  
-        // Add a column with a checkbox to each row
-        const rows = Array.from(document.querySelectorAll('#studentsTable tr')).slice(1); // Exclude the header row
-        rows.forEach(row => {
-            const newCell = row.insertCell(-1);
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            const label = document.createElement('label');
-            label.textContent = 'Nghỉ học';
-            checkbox.addEventListener('change', function() {
-                if (this.checked) {
-                    label.textContent = 'Đã đi học';
-                    updateAttendance(row.cells[0].innerText, true); // Update attendance in the database
-                } else {
-                    label.textContent = 'Nghỉ học';
-                    updateAttendance(row.cells[0].innerText, false); // Update attendance in the database
-                }
-            });
-            newCell.appendChild(checkbox);
-            newCell.appendChild(label)
-        });
-    }
-  });
 
-  function updateAttendance(studentId, attended) {
-    const courseId = document.getElementById('mon_hoc').value;
-    const componentId = document.getElementById('hocphan').value;
-    const date = document.getElementById('date').value;
-    if (attended) {
-        fetch('http://localhost:3000/update-attendance', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                course_id: courseId,
-                component_id: componentId,
-                student_id: studentId,
-                attendance_date: date
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Attendance updated successfully');
-            } else {
-                console.error('Failed to update attendance');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    } else {
-        fetch(`http://localhost:3000/delete-attendance?course_id=${courseId}&component_id=${componentId}&student_id=${studentId}&attendance_date=${date}`, {
-            method: 'DELETE',
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Attendance deleted successfully');
-            } else {
-                console.error('Failed to delete attendance');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
+document.getElementById('create_day').addEventListener('click', function() {
+  const dateInput = document.getElementById('date').value;
+  const formattedDate = new Date(dateInput).toLocaleDateString('vi-VN');
+  const headerRow = document.querySelector('#studentsTable tr');
+  const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
+  if (!existingHeader) {
+      const newHeader = document.createElement('th');
+      newHeader.textContent = formattedDate;
+      headerRow.appendChild(newHeader);
+
+      // Add a column with a checkbox to each row
+      const rows = Array.from(document.querySelectorAll('#studentsTable tr')).slice(1); // Exclude the header row
+      rows.forEach(row => {
+          const newCell = row.insertCell(-1);
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          const label = document.createElement('label');
+          label.textContent = 'Nghỉ học';
+          checkbox.addEventListener('change', function() {
+              if (this.checked) {
+                  label.textContent = 'Đã đi học';
+                  updateAttendance(row.cells[0].innerText, true); // Update attendance in the database
+              } else {
+                  label.textContent = 'Nghỉ học';
+                  updateAttendance(row.cells[0].innerText, false); // Update attendance in the database
+              }
+          });
+          newCell.appendChild(checkbox);
+          newCell.appendChild(label)
+      });
+  }
+});
+
+function updateAttendance(studentId, attended) {
+  const courseId = document.getElementById('mon_hoc').value;
+  const componentId = document.getElementById('hocphan').value;
+  const date = document.getElementById('date').value;
+  if (attended) {
+      fetch('http://localhost:3000/update-attendance', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              course_id: courseId,
+              component_id: componentId,
+              student_id: studentId,
+              attendance_date: date
+          }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              console.log('Attendance updated successfully');
+          } else {
+              console.error('Failed to update attendance');
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  } else {
+      fetch(`http://localhost:3000/delete-attendance?course_id=${courseId}&component_id=${componentId}&student_id=${studentId}&attendance_date=${date}`, {
+          method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              console.log('Attendance deleted successfully');
+          } else {
+              console.error('Failed to delete attendance');
+          }
+      })
+      .catch(error => console.error('Error:', error));
+  }
 }
 }

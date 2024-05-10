@@ -57,37 +57,6 @@ app.post('/verify-token', (req, res) => {
   });
 });
 
-app.get('/get-students', (req, res) => {
-  const courseId = req.query.course_id;
-  const componentId = req.query.component_id;
-
-  pool.query('SELECT * FROM componentstudents WHERE course_id = ? AND component_id = ?', [courseId, componentId], function(error, results, fields) {
-    if (error) throw error;
-
-    // Create an array to hold the promises from the student detail queries
-    const studentDetailPromises = results.map(result => {
-      return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM students WHERE student_id = ?', [result.student_id], function(error, studentResults, fields) {
-          if (error) {
-            reject(error);
-          } else {
-            resolve({...result, ...studentResults[0]}); // Assuming that student_id is unique and only one row will be returned
-          }
-        });
-      });
-    });
-
-    // Wait for all the student detail queries to complete
-    Promise.all(studentDetailPromises)
-      .then(studentDetails => {
-        res.json(studentDetails);
-      })
-      .catch(error => {
-        throw error;
-      });
-  });
-});
-
 app.get('/courses', (req, res) => {
   pool.query('SELECT * FROM courses', function(error, results, fields) {
     if (error) throw error;
@@ -103,6 +72,41 @@ app.get('/course-components', (req, res) => {
   });
 });
 
+app.get('/get-students', (req, res) => {
+  const courseId = req.query.course_id;
+  const componentId = req.query.component_id;
+
+  pool.query('SELECT * FROM componentstudents WHERE course_id = ? AND component_id = ?', [courseId, componentId], function(error, results, fields) {
+    if (error) throw error;
+
+    const studentDetailPromises = results.map(result => {
+      return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM students WHERE student_id = ?', [result.student_id], function(error, studentResults, fields) {
+          if (error) {
+            reject(error);
+          } else {
+            pool.query('SELECT * FROM Attendance WHERE student_id = ? AND course_id = ? AND component_id = ?', [result.student_id, courseId, componentId], function(error, attendanceResults, fields) {
+              if (error) {
+                reject(error);
+              } else {
+                const attendanceDates = attendanceResults.map(record => record.attendance_date);
+                const attended = attendanceDates.length > 0;
+                resolve({...studentResults[0], attended, attendanceDates});
+              }
+            });
+          }
+        });
+      });
+    });
+
+    Promise.all(studentDetailPromises)
+      .then(studentDetails => res.json(studentDetails))
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while fetching student details.' });
+      });
+  });
+});
 
 app.post('/update-attendance', (req, res) => {
   const { course_id, component_id, student_id, attendance_date } = req.body;
@@ -134,6 +138,7 @@ app.delete('/delete-attendance', (req, res) => {
       }
   });
 });
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
