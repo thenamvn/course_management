@@ -128,8 +128,8 @@ function getStudents(courseId, componentId) {
           <table id="studentsTable">
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Khoá</th>
+              <th>Họ và tên</th>
+              <th>Sinh viên khoá</th>
             </tr>
           </table>
       `;
