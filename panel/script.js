@@ -112,4 +112,36 @@ function getListStudents() {
       })
       .catch(error => console.error('Error:', error));
   });
+
+  document.getElementById('create_day').addEventListener('click', function() {
+    const dateInput = document.getElementById('date').value;
+    const formattedDate = new Date(dateInput).toLocaleDateString('vi-VN');
+    const headerRow = document.querySelector('#studentsTable tr');
+    const existingHeader = Array.from(headerRow.children).find(th => th.textContent === formattedDate);
+    if (!existingHeader) {
+        const newHeader = document.createElement('th');
+        newHeader.textContent = formattedDate;
+        headerRow.appendChild(newHeader);
+  
+        // Add a column with a checkbox to each row
+        const rows = Array.from(document.querySelectorAll('#studentsTable tr')).slice(1); // Exclude the header row
+        rows.forEach(row => {
+            const newCell = row.insertCell(-1);
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            const label = document.createElement('label');
+            label.textContent = 'Nghỉ học';
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    label.textContent = 'Đã đi học';
+                } else {
+                    label.textContent = 'Nghỉ học';
+                }
+            });
+            newCell.appendChild(checkbox);
+            newCell.appendChild(label)
+        });
+    }
+  });
+  
 }
