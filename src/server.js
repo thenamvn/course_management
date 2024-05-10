@@ -57,7 +57,7 @@ app.post('/verify-token', (req, res) => {
   });
 });
 
-app.post('/get-students', (req, res) => {
+app.get('/get-students', (req, res) => {
   pool.query('SELECT * FROM sinhvien', function(error, results, fields) {
     if (error) throw error;
     res.json(results);

@@ -51,7 +51,7 @@ VALUES
 (10, 'Ira Nunn', 2022);
 
 -- Courses (tạo 1 môn học có tên là cse3033 với id 1)
-INSERT INTO Courses (course_id, course_name) VALUES (1, 'Mạch logic');
+INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điều hành');
 INSERT INTO Courses (course_id, course_name) VALUES (2, 'Lịch sử Đảng');
 
 -- CourseComponents (tạo ra các học phần 1,2,3 cho môn có course_id 1)
