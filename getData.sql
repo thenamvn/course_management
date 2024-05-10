@@ -5,11 +5,11 @@ INNER JOIN ComponentStudents cs ON s.student_id = cs.student_id
 WHERE cs.course_id = 2 AND cs.component_id = 1;
 
 -- Thêm dữ liệu vào bảng Attendance
-INSERT INTO Attendance (attendance_id, course_id, component_id, student_id, attendance_date)
+INSERT INTO Attendance (course_id, component_id, student_id, attendance_date)
 VALUES 
-(1, 1, 1, 1, '2024-05-10'),
-(2, 1, 1, 2, '2024-05-10'),
-(3, 2, 1, 1, '2024-05-10');
+(1, 1, 1, '2024-05-10'),
+(1, 1, 2, '2024-05-10'),
+(2, 1, 1, '2024-05-10');
 
 -- lấy thông tin ai đã điểm danh
 SELECT a.student_id, s.student_name
