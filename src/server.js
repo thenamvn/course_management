@@ -103,6 +103,37 @@ app.get('/course-components', (req, res) => {
   });
 });
 
+
+app.post('/update-attendance', (req, res) => {
+  const { course_id, component_id, student_id, attendance_date } = req.body;
+
+  const query = `INSERT INTO Attendance (course_id, component_id, student_id, attendance_date) 
+                 VALUES (?, ?, ?, ?)
+                 ON DUPLICATE KEY UPDATE course_id = VALUES(course_id), component_id = VALUES(component_id), student_id = VALUES(student_id), attendance_date = VALUES(attendance_date)`;
+
+  pool.query(query, [course_id, component_id, student_id, attendance_date], (error, results) => {
+      if (error) {
+          console.error(error);
+          res.status(500).json({ success: false });
+      } else {
+          res.json({ success: true });
+      }
+  });
+});
+app.delete('/delete-attendance', (req, res) => {
+  const { course_id, component_id, student_id, attendance_date } = req.query;
+
+  const query = `DELETE FROM Attendance WHERE course_id = ? AND component_id = ? AND student_id = ? AND attendance_date = ?`;
+
+  pool.query(query, [course_id, component_id, student_id, attendance_date], (error, results) => {
+      if (error) {
+          console.error(error);
+          res.status(500).json({ success: false });
+      } else {
+          res.json({ success: true });
+      }
+  });
+});
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });

@@ -134,8 +134,10 @@ function getListStudents() {
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
                     label.textContent = 'Đã đi học';
+                    updateAttendance(row.cells[0].innerText, true); // Update attendance in the database
                 } else {
                     label.textContent = 'Nghỉ học';
+                    updateAttendance(row.cells[0].innerText, false); // Update attendance in the database
                 }
             });
             newCell.appendChild(checkbox);
@@ -143,5 +145,46 @@ function getListStudents() {
         });
     }
   });
-  
+
+  function updateAttendance(studentId, attended) {
+    const courseId = document.getElementById('mon_hoc').value;
+    const componentId = document.getElementById('hocphan').value;
+    const date = document.getElementById('date').value;
+    if (attended) {
+        fetch('http://localhost:3000/update-attendance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                course_id: courseId,
+                component_id: componentId,
+                student_id: studentId,
+                attendance_date: date
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Attendance updated successfully');
+            } else {
+                console.error('Failed to update attendance');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    } else {
+        fetch(`http://localhost:3000/delete-attendance?course_id=${courseId}&component_id=${componentId}&student_id=${studentId}&attendance_date=${date}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Attendance deleted successfully');
+            } else {
+                console.error('Failed to delete attendance');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
 }
