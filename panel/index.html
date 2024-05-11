@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" href = "../icon/logo1.png" type = "image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
     <title>Quản lí sinh viên</title>
   </head>
   <body>
@@ -28,6 +29,7 @@
         <input type="date" id="date" name="date" value="">
         <button id = "create_day">Thêm Ngày</button>
       </div>
+      <button id = "export" onclick="downloadStudentsTable()">Download</button>
     </div>
     <script src="./script.js"></script>
   </body>

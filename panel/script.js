@@ -1,4 +1,16 @@
 // block.js
+function downloadStudentsTable() {
+        var table = document.getElementById('studentsTable');
+        // Check if the table exists
+        if (table) {
+            // Convert the table to a workbook
+            var wb = XLSX.utils.table_to_book(table, {sheet:"Sheet 1"});
+
+            // Write the workbook to a file
+            XLSX.writeFile(wb, 'studentsTable.xlsx');
+        }
+}
+
 function verifyTokenAndProceed(actionFunction, ...args) {
   fetch('http://localhost:3000/verify-token', {
     method: 'POST',
@@ -37,6 +49,8 @@ window.onload = function() {
     window.location.href = './404.html';
   }
 };
+
+
 
 function fetchCourses() {
   fetch('http://localhost:3000/courses', { method: 'GET' })
