@@ -39,12 +39,16 @@ tr:nth-child(even) {
   flex-wrap: wrap;
   justify-content: space-between;
   border: 1px solid #ccc;
-  padding: 10px;
-  margin-top: 20px; /* Add margin to the container */
+  padding: 20px; /* Increase padding for a more spacious look */
+  margin-top: 20px;
+  border-radius: 10px; /* Add border radius for a softer look */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add box shadow for depth */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effects */
 }
 
 .container:focus {
   border-color: #aaa;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase box shadow on focus */
 }
 
 .input-field {
@@ -52,6 +56,43 @@ tr:nth-child(even) {
   width: 100%; /* Full width input fields */
   max-width: 48%; /* Maximum width for input fields */
   display: flex;
+  align-items: center;
+}
+
+.input-field select {
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: white;
+  appearance: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-field select:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field input[type="date"] {
+  width: 200px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: white;
+  appearance: none;
+  font-size: 16px;
+  color: #333;
+}
+
+.input-field input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 button {
