@@ -91,39 +91,3 @@ VALUES
     (2, 1, 'Học phần 1'),
     (2, 2, 'Học phần 2'),
     (2, 3, 'Học phần 3');
-
--- Thêm 5 sinh viên vào môn 1 học phần 1
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(1, 1, 1),
-(1, 1, 2),
-(1, 1, 3),
-(1, 1, 4),
-(1, 1, 5);
-
--- Thêm 5 sinh viên vào môn 1 học phần 2
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(1, 2, 6),
-(1, 2, 7),
-(1, 2, 8),
-(1, 2, 9),
-(1, 2, 10);
-
--- Thêm 5 sinh viên vào môn 2 học phần 1
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(2, 1, 1),
-(2, 1, 2),
-(2, 1, 3),
-(2, 1, 4),
-(2, 1, 5);
-
--- Thêm 5 sinh viên vào môn 2 học phần 2
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(2, 2, 6),
-(2, 2, 7),
-(2, 2, 8),
-(2, 2, 9),
-(2, 2, 10);
