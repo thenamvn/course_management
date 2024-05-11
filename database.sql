@@ -37,18 +37,46 @@ CREATE TABLE Attendance (
     FOREIGN KEY (student_id) REFERENCES Students(student_id)
 );
 -- Danh sách tổng toàn bộ các sinh viên
-INSERT INTO students (student_id, student_name, student_year) 
-VALUES 
-(1, 'Herman Simons', 2022),
-(2, 'Ravid Rouf', 2022),
-(3, 'Dukie Boulter', 2022),
-(4, 'Kendell Minshall', 2022),
-(5, 'Goldi Wallhead', 2022),
-(6, 'Iris Roughey', 2022),
-(7, 'Wendall Louca', 2022),
-(8, 'Jessalin Scrase', 2022),
-(9, 'Maud Dolbey', 2022),
-(10, 'Ira Nunn', 2022);
+insert into students (student_id, student_name, student_year) values (1, 'Penny Tytcomb', 2009);
+insert into students (student_id, student_name, student_year) values (2, 'Jae Rean', 1972);
+insert into students (student_id, student_name, student_year) values (3, 'Alfons Sango', 2000);
+insert into students (student_id, student_name, student_year) values (4, 'Murial Ponting', 2011);
+insert into students (student_id, student_name, student_year) values (5, 'Reagan Pail', 2010);
+insert into students (student_id, student_name, student_year) values (6, 'Donnie Skaife d''Ingerthorpe', 2003);
+insert into students (student_id, student_name, student_year) values (7, 'Marla Rosiello', 1986);
+insert into students (student_id, student_name, student_year) values (8, 'Casper Bewick', 2004);
+insert into students (student_id, student_name, student_year) values (9, 'Evey Kineton', 1996);
+insert into students (student_id, student_name, student_year) values (10, 'Binni Callard', 1995);
+insert into students (student_id, student_name, student_year) values (11, 'Dagny Schottli', 1997);
+insert into students (student_id, student_name, student_year) values (12, 'Verina Arstingall', 2005);
+insert into students (student_id, student_name, student_year) values (13, 'Levin Wreath', 2006);
+insert into students (student_id, student_name, student_year) values (14, 'Kalinda O''Hara', 2000);
+insert into students (student_id, student_name, student_year) values (15, 'Gleda Sands', 1999);
+insert into students (student_id, student_name, student_year) values (16, 'Phedra Brandenburg', 1994);
+insert into students (student_id, student_name, student_year) values (17, 'Fernandina Sowood', 1997);
+insert into students (student_id, student_name, student_year) values (18, 'Pierrette Litterick', 2011);
+insert into students (student_id, student_name, student_year) values (19, 'Stanly Seebright', 1955);
+insert into students (student_id, student_name, student_year) values (20, 'Yolanthe Kellitt', 1993);
+insert into students (student_id, student_name, student_year) values (21, 'Tonya Orhtmann', 2006);
+insert into students (student_id, student_name, student_year) values (22, 'Witty Ubsdall', 2007);
+insert into students (student_id, student_name, student_year) values (23, 'Jammal O''Donegan', 2007);
+insert into students (student_id, student_name, student_year) values (24, 'Marnia Devereux', 1997);
+insert into students (student_id, student_name, student_year) values (25, 'Flint Atack', 2008);
+insert into students (student_id, student_name, student_year) values (26, 'Gabrielle Sagg', 2009);
+insert into students (student_id, student_name, student_year) values (27, 'Haskel Cumpton', 2007);
+insert into students (student_id, student_name, student_year) values (28, 'Harrie Philipot', 2008);
+insert into students (student_id, student_name, student_year) values (29, 'Sherman Merali', 1984);
+insert into students (student_id, student_name, student_year) values (30, 'Richard McCadden', 2006);
+insert into students (student_id, student_name, student_year) values (31, 'Devi Manns', 1993);
+insert into students (student_id, student_name, student_year) values (32, 'Cortney Emm', 1999);
+insert into students (student_id, student_name, student_year) values (33, 'Gray Nathan', 2001);
+insert into students (student_id, student_name, student_year) values (34, 'Lori Haslock', 1988);
+insert into students (student_id, student_name, student_year) values (35, 'Jane Bursnall', 2006);
+insert into students (student_id, student_name, student_year) values (36, 'Adam Jenken', 2012);
+insert into students (student_id, student_name, student_year) values (37, 'Hi Lowe', 2008);
+insert into students (student_id, student_name, student_year) values (38, 'Ario Scay', 2011);
+insert into students (student_id, student_name, student_year) values (39, 'Brnaby Tidy', 2004);
+insert into students (student_id, student_name, student_year) values (40, 'Elisabet Freckleton', 2011);
 
 -- Courses (tạo 1 môn học có tên là cse3033 với id 1)
 INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điều hành');
