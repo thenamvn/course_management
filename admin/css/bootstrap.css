@@ -1,0 +1,31 @@
+.rounded-circle {
+    margin-top: 25px;
+    width: 100px;
+    height: 100px;
+}
+
+.btn.btn-primary.btn-block {
+    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #00a84f;
+    height: 50px;
+    font-size: 1.4em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+    margin-top: 20px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto; /* Center the button */
+}
+.btn.btn-primary.btn-block:hover {
+    color: #fff;
+}
+.border-3 {
+    margin-top: 25px;
+    border-width: 3px;
+    border-radius: 10px;
+}
