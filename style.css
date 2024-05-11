@@ -72,9 +72,6 @@ form {
   padding:0 18px; 
   
 }
-.input::placeholder {
-  color: #94a3b8;
-}
 
 .input:focus, input:hover {
   outline: none;
