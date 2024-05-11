@@ -165,13 +165,13 @@ document.getElementById('create_day').addEventListener('click', function() {
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
           const label = document.createElement('label');
-          label.textContent = 'Nghỉ học';
+          label.textContent = 'Vắng';
           checkbox.addEventListener('change', function() {
               if (this.checked) {
                   label.textContent = 'Đã đi học';
                   updateAttendance(row.cells[0].innerText, true); // Update attendance in the database
               } else {
-                  label.textContent = 'Nghỉ học';
+                  label.textContent = 'Vắng';
                   updateAttendance(row.cells[0].innerText, false); // Update attendance in the database
               }
           });
