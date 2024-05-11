@@ -1,14 +1,20 @@
 // block.js
 function downloadStudentsTable() {
-        var table = document.getElementById('studentsTable');
-        // Check if the table exists
-        if (table) {
-            // Convert the table to a workbook
-            var wb = XLSX.utils.table_to_book(table, {sheet:"Sheet 1"});
+  var table = document.getElementById('studentsTable');
+  var selectElement = document.getElementById('mon_hoc');
+  var mon_hoc = selectElement.options[selectElement.selectedIndex].text;
+  var hocphan = document.getElementById('hocphan').value;
+  // Check if the table exists
+  if (table) {
+      // Convert the table to a workbook
+      var wb = XLSX.utils.table_to_book(table, {sheet:"Sheet 1"});
 
-            // Write the workbook to a file
-            XLSX.writeFile(wb, 'studentsTable.xlsx');
-        }
+      // Create a filename from the course and component names
+      var filename = mon_hoc + '_' + hocphan + '.xlsx';
+
+      // Write the workbook to a file
+      XLSX.writeFile(wb, filename);
+  }
 }
 
 //Get the button
