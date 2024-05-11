@@ -20,24 +20,25 @@ document.getElementById('show-password').addEventListener('change', function() {
   }
 });
 
+document.getElementById('remember-me').addEventListener('change', function() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (this.checked) {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+  } else {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  }
+});
+
 document.getElementById('login-button').addEventListener('click', function(event) {
   event.preventDefault(); // Prevent the form from submitting
 
   // Get the input values
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;
-
-  // Check if "Remember me" is checked
-  const rememberMe = document.getElementById('remember-me').checked;
-  if (rememberMe) {
-    // Save username and password to localStorage
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-  } else {
-    // If "Remember me" is not checked, clear the username and password from localStorage
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
-  }
 
   // Send a POST request to the /login route
   fetch('http://localhost:3000/login', {

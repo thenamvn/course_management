@@ -60,11 +60,22 @@ form {
   width: 100%; /* Full width input fields */
   max-width: 300px; /* Maximum width for input fields */
   height: 30px;
-  border: 1px solid gray;
+  border: none;
   border-radius: 5px;
   padding: 5px;
   margin-top: 10px;
   box-sizing: border-box; /* Include padding in width calculation */
+  
+}
+.input::placeholder {
+  color: #94a3b8;
+}
+
+.input:focus, input:hover {
+  outline: none;
+  border-color: rgba(129, 140, 248);
+  background-color: #fff;
+  box-shadow: 0 0 0 5px rgb(129 140 248 / 30%);
 }
 
 .login-screen input[type="checkbox"] {
