@@ -59,14 +59,17 @@ form {
 
 .login-screen input[type="text"],
 .login-screen input[type="password"] {
-  width: 100%; /* Full width input fields */
-  max-width: 300px; /* Maximum width for input fields */
-  height: 30px;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-  margin-top: 10px;
-  box-sizing: border-box; /* Include padding in width calculation */
+  border: 1px solid #ccc;
+  outline:none;
+  display:inline-block;
+  height:30px;
+  vertical-align:middle;
+  position:relative;
+  bottom:14px;
+  border-radius:22px;
+  width: 100%;
+  box-sizing:border-box;
+  padding:0 18px; 
   
 }
 .input::placeholder {
