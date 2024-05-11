@@ -84,23 +84,6 @@ form {
   margin-top: 10px;
 }
 
-.login-screen .login-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  margin-top: 20px;
-  cursor: pointer;
-  display: block;
-  margin: 10px auto; /* Center the button */
-}
-
-/* Button Hover Effect */
-.login-screen .login-button:hover {
-  background-color: #45a049;
-}
-
 .login-screen .forgot-password {
   color: #4CAF50;
   text-decoration: underline;
