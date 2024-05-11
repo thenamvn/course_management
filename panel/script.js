@@ -13,7 +13,7 @@ function verifyTokenAndProceed(actionFunction, ...args) {
         actionFunction(...args);
       } else {
         alert("Xác thực thất bại, vui lòng đăng nhập lại!");
-        window.location.href = '../index.html';
+        // window.location.href = '../index.html';
       }
     })
     .catch(error => console.error('Error:', error));
@@ -34,7 +34,7 @@ window.onload = function() {
     });
   } else {
     // If there is no token, redirect to the login page
-    window.location.href = './404.html';
+    // window.location.href = './404.html';
   }
 };
 
