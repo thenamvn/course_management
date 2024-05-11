@@ -7,6 +7,7 @@ CREATE TABLE CourseComponents (
     component_id INT NOT NULL,
     course_id INT NOT NULL,
     component_name VARCHAR(50) NOT NULL,
+    course_credit INT NOT NULL,
     PRIMARY KEY (component_id, course_id),
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
@@ -83,11 +84,11 @@ INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điề
 INSERT INTO Courses (course_id, course_name) VALUES (2, 'Lịch sử Đảng');
 
 -- CourseComponents (tạo ra các học phần 1,2,3 cho môn có course_id 1)
-INSERT INTO CourseComponents (course_id, component_id, component_name)
+INSERT INTO CourseComponents (course_id, component_id, component_name,course_credit)
 VALUES
-    (1, 1, 'Học phần 1'),
-    (1, 2, 'Học phần 2'),
-    (1, 3, 'Học phần 3'),
-    (2, 1, 'Học phần 1'),
-    (2, 2, 'Học phần 2'),
-    (2, 3, 'Học phần 3');
+    (1, 1, 'Nguyên lí hp1',2),
+    (1, 2, 'Nguyên lí hp2',2),
+    (1, 3, 'Nguyên lí hp3',2),
+    (2, 1, 'LS Đảng hp1',2),
+    (2, 2, 'LS Đảng hp2',2),
+    (2, 3, 'LS Đảng hp3',2);

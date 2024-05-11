@@ -7,6 +7,7 @@ CREATE TABLE CourseComponents (
     component_id INT NOT NULL,
     course_id INT NOT NULL,
     component_name VARCHAR(50) NOT NULL,
+    course_credit INT NOT NULL,
     PRIMARY KEY (component_id, course_id),
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
