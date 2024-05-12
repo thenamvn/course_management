@@ -112,7 +112,8 @@ button:hover {
 h2 {
   /* Add margin to the heading  adn set to center*/
   margin-top: 20px;
-  text-align: center;
+  text-align: left;
+  margin-left: 20px;
 }
 
 label {
@@ -208,6 +209,17 @@ label {
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
+#account {
+  background-color: #333; /* Add a dark background color */
+  padding: 5px; /* Add padding */
+  text-align: center; /* Center the text */
+  color: white; /* White text color */
+  display: flex;
+  justify-content: space-between; /* Add this line */
+}
+.account-info {
+  text-align: right; /* Add this line to align the text to the left */
+}
 /* Responsive Styles */
 @media only screen and (max-width: 600px) {
   .input-field {

@@ -1,89 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        .openbtn {
-            font-size: 20px;
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-        }
-
-        .openbtn:hover {
-            background-color: #444;
-        }
-
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-    </style>
+    <title>Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/sidebar.css">
 </head>
 <body>
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-3 bg-light" id="mySidebar" style="display: none;">
+                <button class="btn btn-light btn-block" onclick="closeNav()">Close &times;</button>
+                <a href="#" class="btn btn-light btn-block">Link 1</a>
+                <a href="#" class="btn btn-light btn-block">Link 2</a>
+                <a href="#" class="btn btn-light btn-block">Link 3</a>
+            </div>
 
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
-<div id="main">
-  <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
-</div>
-
-<script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft= "0";
-    }
-</script>
-
+            <!-- Page Content -->
+            <div class="col" id="main">
+                <div class="bg-primary text-white p-2">
+                    <button id="openNav" class="btn btn-primary" onclick="openNav()">&#9776;</button>
+                    <h1>My Page</h1>
+                </div>
+                <div class="mt-3">
+                    <p>In this example, the sidebar is hidden (style="display:none")</p>
+                    <p>It is shown when you click on the menu icon in the top left corner.</p>
+                    <p>When it is opened, it shifts the page content to the right.</p>
+                    <p>We use JavaScript to add a 25% left margin to the div element with id="main" when this happens. The value "25%" matches the width of the sidebar.</p>
+                </div>
+            </div>
+        </div>
+    <script src="./js/sidebar.js"></script>
 </body>
 </html>

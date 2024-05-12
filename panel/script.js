@@ -56,9 +56,14 @@ function verifyTokenAndProceed(actionFunction, ...args) {
     })
     .catch(error => console.error('Error:', error));
 }
-
+function logout() {
+  localStorage.removeItem('token');
+  window.location.href = '../index.html';
+}
 window.onload = function() {
   const savedToken = localStorage.getItem('token');
+  const savedUsername = localStorage.getItem('username');
+  document.getElementById('account-name').innerText = savedUsername;
   const today = new Date();
   const formattedDate = today.toISOString().substring(0, 10); // Format the date as 'yyyy-mm-dd'
   document.getElementById('date').value = formattedDate;

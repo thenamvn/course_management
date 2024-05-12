@@ -10,7 +10,14 @@
     <title>Quản lí sinh viên</title>
   </head>
   <body>
-    <h2>Quản lí sinh viên</h2>
+    <div id = "account">
+      <h2>Quản lí sinh viên</h2>
+      <!-- Add new section for account information -->
+      <div class="account-info">
+        <p>Account: <span id="account-name"></span></p>
+        <button id="logout" onclick="logout()">Đăng xuất</button>
+      </div>
+    </div>
     <div id = "splash-screen" class="loader"></div>
     <div class="container" id = "container">
       <div class="input-field">
