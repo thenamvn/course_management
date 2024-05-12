@@ -198,8 +198,8 @@ label {
   right: 10px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
   cursor: pointer; /* Add a mouse pointer on hover */
-  border-radius: 50%; /* Rounded corners */
-  background-color: #333; /* Black background color */
+  padding: 7px; /* Add some padding */
+  background-color: #FFA500;
 }
 
 #scrollTopBtn:hover {
