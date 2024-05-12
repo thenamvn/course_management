@@ -38,6 +38,19 @@ CREATE TABLE Attendance (
     FOREIGN KEY (student_id) REFERENCES Students(student_id)
 );
 
+
+CREATE TABLE StudentGrades (
+    course_id INT NOT NULL,
+    component_id INT NOT NULL,
+    student_id INT NOT NULL,
+    regular_score DECIMAL(4,2),
+    midterm_score DECIMAL(4,2),
+    final_score DECIMAL(4,2),
+    PRIMARY KEY (course_id, component_id, student_id),
+    FOREIGN KEY (component_id, course_id) REFERENCES CourseComponents(component_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);
+
 CREATE TABLE users (
   id INT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,

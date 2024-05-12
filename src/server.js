@@ -40,6 +40,78 @@ app.post('/login', (req, res) => {
     }
   });
 });
+
+app.get('/student-grades/:courseId/:componentId', (req, res) => {
+  const courseId = req.params.courseId;
+  const componentId = req.params.componentId;
+
+  pool.query(
+    `SELECT 
+      Students.student_id,
+      Students.student_name,
+      StudentGrades.regular_score,
+      StudentGrades.midterm_score,
+      StudentGrades.final_score
+    FROM 
+      Students
+    INNER JOIN 
+      ComponentStudents ON Students.student_id = ComponentStudents.student_id
+    LEFT JOIN 
+      StudentGrades ON Students.student_id = StudentGrades.student_id AND ComponentStudents.course_id = StudentGrades.course_id AND ComponentStudents.component_id = StudentGrades.component_id
+    WHERE 
+      ComponentStudents.course_id = ? AND ComponentStudents.component_id = ?`,
+    [courseId, componentId],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+
+      res.json(results);
+    }
+  );
+});
+
+app.post('/update-grade', (req, res) => {
+  // Validate request body
+  if (!req.body) {
+    return res.status(400).json({ success: false, message: 'Missing request body' });
+  }
+
+  const { courseId, componentId, studentId, regularScore, midtermScore, finalScore } = req.body;
+
+  // Validate required fields
+  if ([courseId, componentId, studentId].includes(undefined)) {
+    return res.status(400).json({ success: false, message: 'Missing required fields' });
+  }
+
+  pool.query(
+    'UPDATE StudentGrades SET regular_score = ?, midterm_score = ?, final_score = ? WHERE course_id = ? AND component_id = ? AND student_id = ?',
+    [regularScore, midtermScore, finalScore, courseId, componentId, studentId],
+    (error, results) => {
+      if (error) {
+        return res.status(500).json({ success: false, message: 'Database error', error: error.message });
+      }
+
+      if (results.affectedRows === 0) {
+        // No grade found to update, so insert a new record
+        pool.query(
+          'INSERT INTO StudentGrades (course_id, component_id, student_id, regular_score, midterm_score, final_score) VALUES (?, ?, ?, ?, ?, ?)',
+          [courseId, componentId, studentId, regularScore, midtermScore, finalScore],
+          (error, results) => {
+            if (error) {
+              return res.status(500).json({ success: false, message: 'Database error', error: error.message });
+            }
+
+            return res.json({ success: true, message: 'Grade inserted successfully' });
+          }
+        );
+      } else {
+        return res.json({ success: true, message: 'Grade updated successfully' });
+      }
+    }
+  );
+});
+
 app.post('/verify-token', (req, res) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
