@@ -4,22 +4,27 @@ function downloadStudentsTable() {
   var mon_hoc = selectElement.options[selectElement.selectedIndex].text;
   var hocphan = document.getElementById("hocphan").value;
 
+  var isScoreTable = false;
+
   // Check if the table exists
   if (!table) {
     // Try to get the table by the alternative id
     table = document.getElementById("studentsTable_score");
+    isScoreTable = true;
   }
 
-  // Clone the table to avoid modifying the original one
-  var clonedTable = table.cloneNode(true);
+  if (table) {
+    // Clone the table to avoid modifying the original one
+    var clonedTable = table.cloneNode(true);
 
-  // Remove the last column (assuming it's the "Sửa" column)
-  var rows = clonedTable.rows;
-  for (var i = 0; i < rows.length; i++) {
-    rows[i].deleteCell(-1);
-  }
+    // Remove the last column of the score table
+    if (isScoreTable) {
+      var rows = clonedTable.rows;
+      for (var i = 0; i < rows.length; i++) {
+        rows[i].deleteCell(-1);
+      }
+    }
 
-  if (clonedTable) {
     // Convert the table to a workbook
     var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet 1" });
 
@@ -28,6 +33,8 @@ function downloadStudentsTable() {
 
     // Write the workbook to a file
     XLSX.writeFile(wb, filename);
+  } else {
+    console.log("No table found to download.");
   }
 }
 
