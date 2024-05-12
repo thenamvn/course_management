@@ -1,8 +1,8 @@
-![image](https://github.com/thenamvn/course_management/assets/57611937/20cf00c4-e200-4080-9afc-747cc3a07011)
+![image](https://github.com/thenamvn/course_management/assets/57611937/1a003a62-095b-47f5-881a-9284e3beec3b)
 
-![image](https://github.com/thenamvn/course_management/assets/57611937/df9ce11a-f9dd-4c14-9ec7-fc3541631e7a)
 
-![image](https://github.com/thenamvn/course_management/assets/57611937/53a7e0b3-b933-4811-9cd1-de8d7d631701)
+![image](https://github.com/thenamvn/course_management/assets/57611937/16db4df6-d1e8-4b5c-918c-4218d26fe137)
+
 
 Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh
 <pre>
