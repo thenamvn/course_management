@@ -26,7 +26,8 @@ CREATE TABLE ComponentStudents (
     UNIQUE KEY (course_id, student_id),
     FOREIGN KEY (component_id) REFERENCES CourseComponents(component_id),
     FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id),
+	INDEX idx_componentstudents (course_id, component_id, student_id)
 );
 CREATE TABLE Attendance (
     course_id INT NOT NULL,
@@ -34,10 +35,8 @@ CREATE TABLE Attendance (
     student_id INT NOT NULL,
     attendance_date DATE NOT NULL,
     PRIMARY KEY (course_id, component_id, student_id, attendance_date),
-    FOREIGN KEY (component_id, course_id) REFERENCES CourseComponents(component_id, course_id),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+    FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
 );
-
 
 CREATE TABLE StudentGrades (
     course_id INT NOT NULL,
@@ -47,9 +46,9 @@ CREATE TABLE StudentGrades (
     midterm_score DECIMAL(4,2),
     final_score DECIMAL(4,2),
     PRIMARY KEY (course_id, component_id, student_id),
-    FOREIGN KEY (component_id, course_id) REFERENCES CourseComponents(component_id, course_id),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+    FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
 );
+
 
 CREATE TABLE users (
   id INT PRIMARY KEY,
