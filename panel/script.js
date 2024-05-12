@@ -250,7 +250,7 @@ function getListStudents() {
     )
       .then((response) => response.json())
       .then((data) => {
-        const existingTable = document.getElementById("studentsTable");
+        const existingTable = document.getElementById("studentsTable") || document.getElementById("studentsTable_score");
         if (existingTable) {
           existingTable.remove();
         }
