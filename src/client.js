@@ -53,6 +53,7 @@ document.getElementById('login-button').addEventListener('click', function(event
     if (data.success) {
       // Save the token to localStorage
       localStorage.setItem('token', data.token);
+      localStorage.setItem('current_username', username);
       // render to the home page
       window.location.href = '/panel';
       console.log(data.message);

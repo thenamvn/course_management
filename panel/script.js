@@ -62,7 +62,7 @@ function logout() {
 }
 window.onload = function() {
   const savedToken = localStorage.getItem('token');
-  const savedUsername = localStorage.getItem('username');
+  const savedUsername = localStorage.getItem('current_username');
   document.getElementById('account-name').innerText = savedUsername;
   const today = new Date();
   const formattedDate = today.toISOString().substring(0, 10); // Format the date as 'yyyy-mm-dd'
