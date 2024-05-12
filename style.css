@@ -2,9 +2,12 @@
 
 /* General Styles */
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  padding: 0;
+  background-color: #f6f6f6;
 }
 
 form {
@@ -15,7 +18,6 @@ form {
   width: 100%; /* Full width form */
   max-width: 300px; /* Maximum width for form */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Center the form */
 }
 
 .profile-picture {

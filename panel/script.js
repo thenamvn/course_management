@@ -18,7 +18,7 @@ function downloadStudentsTable() {
 }
 
 //Get the button
-var mybutton = document.getElementById("myBtn");
+var mybutton = document.getElementById("scrollTopBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
 window.onscroll = function() {scrollFunction()};
@@ -58,6 +58,7 @@ function verifyTokenAndProceed(actionFunction, ...args) {
 }
 function logout() {
   localStorage.removeItem('token');
+  localStorage.removeItem('current_username');
   window.location.href = '../index.html';
 }
 window.onload = function() {

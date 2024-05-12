@@ -1,21 +1,22 @@
 /* Sidebar */
 #mySidebar {
-  height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
+  height: 100%; /* Set the height of the sidebar to 100% of the viewport height */
   position: fixed; /* Make the sidebar fixed so it stays in place */
   z-index: 1; /* Ensure the sidebar is on top of other elements */
   top: 0; /* Position the sidebar at the top */
   left: 0; /* Position the sidebar at the left */
   padding-top: 60px; /* Add some top padding for the navbar or header */
   transition: 0.5s; /* Add a smooth transition when opening/closing the sidebar */
+  width: 20%; /* Set the width of the sidebar */
+  min-width: 100px; /* Set the minimum width of the sidebar */
 }
 
 /* Style for the links inside the sidebar */
 #mySidebar a {
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 18px;
   color: #818181;
-  display: block;
+  display: flex;
   transition: 0.3s;
 }
 
@@ -36,9 +37,4 @@
 /* Style for the main content area */
 #main {
   transition: margin-left 0.5s;
-}
-
-/* Style when the sidebar is opened */
-.sidebar-open #main {
-  margin-left: 25%; /* Shift the main content to the right by 25% to make space for the sidebar */
 }

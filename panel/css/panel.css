@@ -13,8 +13,10 @@ table {
   border-collapse: collapse;
   margin-top: 20px; /* Add margin to the table */
 }
-table th, table td {
+table th,
+table td {
   text-align: center;
+  border: 1px solid #ddd;
 }
 
 th,
@@ -25,7 +27,7 @@ td {
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
@@ -96,7 +98,7 @@ tr:nth-child(even) {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 20px;
   border-radius: 10px;
@@ -132,7 +134,7 @@ label {
 }
 
 .loader:before {
-  content: '';
+  content: "";
   width: 48px;
   height: 5px;
   background: #f0808050;
@@ -144,7 +146,7 @@ label {
 }
 
 .loader:after {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   background: #f08080;
@@ -165,7 +167,7 @@ label {
   }
 
   50% {
-    transform: translateY(18px) scale(1, .9) rotate(45deg);
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
     border-bottom-right-radius: 40px;
   }
 
@@ -189,7 +191,7 @@ label {
   }
 }
 
-#myBtn {
+#scrollTopBtn {
   display: none; /* Hidden by default */
   position: fixed; /* Fixed/sticky position */
   bottom: 20px; /* Place the button at the bottom of the page */
@@ -197,15 +199,14 @@ label {
   z-index: 99; /* Make sure it does not overlap */
   border: none; /* Remove borders */
   outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
-  color: white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+  background-color: #333; /* Black background color */
 }
 
-#myBtn:hover {
+#scrollTopBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
 
@@ -220,6 +221,7 @@ label {
 .account-info {
   text-align: right; /* Add this line to align the text to the left */
 }
+
 /* Responsive Styles */
 @media only screen and (max-width: 600px) {
   .input-field {
