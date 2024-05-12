@@ -45,7 +45,7 @@ CREATE TABLE users (
   fullname VARCHAR(255) not null
 );
 
-insert into users (id, username,password,fullname) values (1,'admin','admin','Nguyễn Thế Nam');
+insert into users (id, username,password,fullname) values (1,'admin','admin','Administrator');
 -- Danh sách tổng toàn bộ các sinh viên
 insert into students (student_id, student_name, student_year) values (1, 'Penny Tytcomb', 2009);
 insert into students (student_id, student_name, student_year) values (2, 'Jae Rean', 1972);
@@ -101,3 +101,45 @@ VALUES
     (2, 1, 'LS Đảng hp1',2),
     (2, 2, 'LS Đảng hp2',2),
     (2, 3, 'LS Đảng hp3',2);
+-- thêm sv vô 1-1
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 1);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 2);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 3);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 4);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 5);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 6);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 7);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 8);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 9);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 10);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 11);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 12);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 13);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 14);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 15);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 16);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 17);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 18);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 19);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 20);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 21);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 22);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 23);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 24);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 25);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 26);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 27);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 28);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 29);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 30);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 31);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 32);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 33);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 34);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 35);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 36);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 37);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 38);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 39);
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES (1, 1, 40);
+
