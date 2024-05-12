@@ -31,7 +31,7 @@ app.post('/login', (req, res) => {
         const token = jwt.sign({ username: username },process.env.SECRET_KEY, { expiresIn: '7d' });
     
         // Send success message along with the token
-        res.json({ success: true, message: 'Logged in successfully', token: token });
+        res.json({ success: true, message: 'Logged in successfully', token: token , fullname: results[0].fullname});
       } else {
         res.json({ success: false, message: 'Incorrect Username and/or Password!' });
       }
