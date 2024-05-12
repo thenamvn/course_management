@@ -15,7 +15,7 @@ CREATE TABLE CourseComponents (
 CREATE TABLE Students (
     student_id INT PRIMARY KEY,
     student_name VARCHAR(255) NOT NULL,
-    student_year VARCHAR(4) NOT NULL
+    student_year INT NOT NULL
 );
 
 CREATE TABLE ComponentStudents (
@@ -48,7 +48,6 @@ CREATE TABLE StudentGrades (
     PRIMARY KEY (course_id, component_id, student_id),
     FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
 );
-
 
 CREATE TABLE users (
   id INT PRIMARY KEY,
