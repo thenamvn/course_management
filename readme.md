@@ -1,4 +1,5 @@
-![image](https://github.com/thenamvn/course_management/assets/57611937/20cf00c4-e200-4080-9afc-747cc3a07011)
+![image](https://github.com/thenamvn/course_management/assets/57611937/1a003a62-095b-47f5-881a-9284e3beec3b)
+
 
 ![image](https://github.com/thenamvn/course_management/assets/57611937/16db4df6-d1e8-4b5c-918c-4218d26fe137)
 
