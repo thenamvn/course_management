@@ -1,13 +1,27 @@
-// block.js
 function downloadStudentsTable() {
   var table = document.getElementById("studentsTable");
   var selectElement = document.getElementById("mon_hoc");
   var mon_hoc = selectElement.options[selectElement.selectedIndex].text;
   var hocphan = document.getElementById("hocphan").value;
+
   // Check if the table exists
-  if (table) {
+  if (!table) {
+    // Try to get the table by the alternative id
+    table = document.getElementById("studentsTable_score");
+  }
+
+  // Clone the table to avoid modifying the original one
+  var clonedTable = table.cloneNode(true);
+
+  // Remove the last column (assuming it's the "Sửa" column)
+  var rows = clonedTable.rows;
+  for (var i = 0; i < rows.length; i++) {
+    rows[i].deleteCell(-1);
+  }
+
+  if (clonedTable) {
     // Convert the table to a workbook
-    var wb = XLSX.utils.table_to_book(table, { sheet: "Sheet 1" });
+    var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet 1" });
 
     // Create a filename from the course and component names
     var filename = mon_hoc + "_" + hocphan + ".xlsx";
@@ -97,7 +111,7 @@ function fetchGrades() {
 
       const parentElement = document.createElement("div");
       parentElement.innerHTML = `
-        <table id="studentsTable">
+        <table id="studentsTable_score">
           <tr>
             <th>MSV</th>
             <th>Họ và tên</th>
@@ -108,7 +122,7 @@ function fetchGrades() {
           </tr>
         </table>
       `;
-      const table = parentElement.querySelector("#studentsTable");
+      const table = parentElement.querySelector("#studentsTable_score");
 
       // Add new table rows for each grade
       data.forEach((item) => {
