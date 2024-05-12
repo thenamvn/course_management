@@ -104,7 +104,7 @@ function fetchGrades() {
   fetch(`http://localhost:3000/student-grades/${courseId}/${componentId}`, { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
-      const existingTable = document.getElementById("studentsTable");
+      const existingTable = document.getElementById("studentsTable") || document.getElementById("studentsTable_score");
       if (existingTable) {
         existingTable.remove();
       }
