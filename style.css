@@ -8,16 +8,24 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #f6f6f6;
+  background-image: url('../resources/bg.jpg');
+  background-size: cover;
 }
 
 form {
   border-radius: 10px;
-  border: 1px solid #ccc;
+  border: none;
   padding: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
   width: 100%; /* Full width form */
   max-width: 300px; /* Maximum width for form */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  /* Centering styles */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .profile-picture {
@@ -63,7 +71,7 @@ form {
   box-sizing:border-box;
   padding:0 18px; 
   margin-top: 5px;
-  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .input:focus, input:hover {
@@ -78,7 +86,7 @@ form {
 }
 
 .login-screen .forgot-password {
-  color: #4CAF50;
+  color: black;
   text-decoration: underline;
   margin-top: -10px;
   cursor: pointer;
@@ -109,7 +117,7 @@ form {
 
 .bn31 .bn31span {
   align-items: center;
-  background: #0e0e10;
+  background: #cdcdd1;
   border-radius: 40px;
   display: flex;
   justify-content: center;
@@ -123,7 +131,7 @@ form {
 }
 .checkbox-wrapper-29 {
   --size: 1rem;
-  --background: #fff;
+  --background:rgba(255, 255, 255, 0);
   font-size: var(--size);
 }
 

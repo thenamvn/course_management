@@ -17,7 +17,19 @@ const pool = mysql.createPool({
   database: process.env.DB_DATABASE,
   port: process.env.DB_PORT
 });
+app.post('/signup', (req, res) => {
+  const fullname = req.body.fullname;
+  const username = req.body.username;
+  const password = req.body.password;
 
+  pool.query('INSERT INTO users (fullname, username, password) VALUES (?, ?, ?)', [fullname, username, password], function(error, results, fields) {
+    if (error) {
+      res.json({ success: false, message: 'Username already exists!' });
+    } else {
+      res.json({ success: true, message: 'User registered successfully!' });
+    }
+  });
+});
 app.post('/login', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;

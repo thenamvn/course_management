@@ -50,14 +50,13 @@ CREATE TABLE StudentGrades (
 );
 
 CREATE TABLE users (
-  id INT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  fullname VARCHAR(255) not null
+  fullname VARCHAR(255) NOT NULL
 );
 
-
-insert into users (id, username,password,fullname) values (1,'admin','admin','Administrator');
+insert into users (username,password,fullname) values ('admin','admin','Administrator');
 -- Danh sách tổng toàn bộ các sinh viên
 insert into students (student_id, student_name, student_year) values (1, 'Penny Tytcomb', 2009);
 insert into students (student_id, student_name, student_year) values (2, 'Jae Rean', 1972);
