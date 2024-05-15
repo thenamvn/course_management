@@ -83,7 +83,7 @@ form {
   margin-top: -10px;
   cursor: pointer;
   display: block;
-  text-align: center;
+  text-align: right;
 }
 .bn31 {
   background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
@@ -194,4 +194,21 @@ form {
 
 .checkbox-wrapper-29 .checkbox__label {
   margin-right: calc(var(--size) * 0.45);
+}
+
+.no-account {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.link {
+  font-weight: 800;
+  color: #2879f3;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #f37e10;
+  text-decoration: underline;
 }
