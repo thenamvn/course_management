@@ -55,8 +55,17 @@ CREATE TABLE users (
   password VARCHAR(255) NOT NULL,
   fullname VARCHAR(255) NOT NULL
 );
+-- Bảng UserCourses để liên kết người dùng với các khóa học
+CREATE TABLE UserCourses (
+    user_id VARCHAR(255) NOT NULL,
+    course_id INT NOT NULL,
+    PRIMARY KEY (user_id, course_id),
+    FOREIGN KEY (user_id) REFERENCES Users(username),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
 
 insert into users (username,password,fullname) values ('admin','admin','Administrator');
+
 -- Danh sách tổng toàn bộ các sinh viên
 insert into students (student_id, student_name, student_year) values (1, 'Penny Tytcomb', 2009);
 insert into students (student_id, student_name, student_year) values (2, 'Jae Rean', 1972);
@@ -102,6 +111,11 @@ insert into students (student_id, student_name, student_year) values (40, 'Elisa
 -- Courses (tạo 1 môn học có tên là cse3033 với id 1)
 INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điều hành');
 INSERT INTO Courses (course_id, course_name) VALUES (2, 'Lịch sử Đảng');
+
+-- Thêm tài khoản admin vô học môn có id là 1
+INSERT INTO UserCourses (user_id, course_id)
+VALUES ("admin", 1);
+
 
 -- CourseComponents (tạo ra các học phần 1,2,3 cho môn có course_id 1)
 INSERT INTO CourseComponents (course_id, component_id, component_name,course_credit)

@@ -32,31 +32,6 @@ pool.query(
   }
 );
 
-app.post("/signup", (req, res) => {
-  const fullname = req.body.fullname;
-  const username = req.body.username;
-  const password = req.body.password;
-
-  pool.query(
-    "INSERT INTO users (fullname, username, password) VALUES (?, ?, ?)",
-    [fullname, username, password],
-    function (error, results, fields) {
-      if (error) {
-        if (error.code === "ER_DUP_ENTRY") {
-          res.json({ success: false, message: "Username already exists!" });
-        } else {
-          res.json({
-            success: false,
-            message: "An error occurred during registration.",
-          });
-        }
-      } else {
-        res.json({ success: true, message: "User registered successfully!" });
-      }
-    }
-  );
-});
-
 app.post('/login', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -169,7 +144,8 @@ app.post('/verify-token', (req, res) => {
 });
 
 app.get('/courses', (req, res) => {
-  pool.query('SELECT * FROM courses', function(error, results, fields) {
+  const userId = req.query.user_id;
+  pool.query('SELECT * FROM Courses INNER JOIN UserCourses ON Courses.course_id = UserCourses.course_id WHERE UserCourses.user_id = ?', [userId], function(error, results, fields) {
     if (error) throw error;
     res.json(results);
   });

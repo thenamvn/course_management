@@ -96,7 +96,6 @@ window.onload = function () {
     verifyTokenAndProceed(() => {
       document.getElementById("splash-screen").style.display = "none";
       document.getElementById("container").style.display = "flex";
-
       fetchCourses(); // Call the new function to fetch courses
     });
   } else {
@@ -212,7 +211,8 @@ function saveGrade(event) {
 }
 
 function fetchCourses() {
-  fetch("http://localhost:3000/courses", { method: "GET" })
+  user_id = localStorage.getItem("current_user");
+  fetch(`http://localhost:3000/courses?user_id=${user_id}`, { method: "GET" })
     .then((response) => response.json())
     .then((data) => {
       const select = document.getElementById("mon_hoc");
