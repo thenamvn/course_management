@@ -81,10 +81,18 @@ CREATE TABLE StudentGrades (
 );
 
 CREATE TABLE users (
-  id INT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL,
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL unique,
   password VARCHAR(255) NOT NULL,
-  fullname VARCHAR(255) not null
+  fullname VARCHAR(255) NOT NULL
+);
+-- Bảng UserCourses để liên kết người dùng với các khóa học
+CREATE TABLE UserCourses (
+    user_id VARCHAR(255) NOT NULL,
+    course_id INT NOT NULL,
+    PRIMARY KEY (user_id, course_id),
+    FOREIGN KEY (user_id) REFERENCES Users(username),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 );
 
 </code>
