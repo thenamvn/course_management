@@ -11,6 +11,7 @@ Thông tin đăng nhập server sql ở file: .env
 Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các lệnh để lấy dữ liệu từ server sql rồi trả lại client.
 
 Video Demo:
+
 https://github.com/thenamvn/course_management/assets/57611937/15e93330-c4b1-462e-b5db-256a0e1c69a6
 
 File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)
