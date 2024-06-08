@@ -4,7 +4,17 @@
 ![image](https://github.com/thenamvn/course_management/assets/57611937/16db4df6-d1e8-4b5c-918c-4218d26fe137)
 
 
-Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh
+Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh.
+
+Thông tin đăng nhập server sql ở file: .env
+
+Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các lệnh để lấy dữ liệu từ server sql rồi trả lại client.
+
+File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)
+
+Full datacode : database.sql
+
+Cấu hình cơ sở dữ liệu (structure.sql):
 <pre>
 <code>
 CREATE TABLE Courses (
@@ -45,6 +55,8 @@ CREATE TABLE Attendance (
     attendance_date DATE NOT NULL,
     PRIMARY KEY (course_id, component_id, student_id, attendance_date),
     FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
+<<<<<<< HEAD
+=======
 );
 
 CREATE TABLE StudentGrades (
@@ -71,7 +83,27 @@ CREATE TABLE UserCourses (
     PRIMARY KEY (user_id, course_id),
     FOREIGN KEY (user_id) REFERENCES Users(username),
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+>>>>>>> 33c08059243a4d2c9e7b267ab0a582e5c729662b
 );
+
+CREATE TABLE StudentGrades (
+    course_id INT NOT NULL,
+    component_id INT NOT NULL,
+    student_id INT NOT NULL,
+    regular_score DECIMAL(4,2),
+    midterm_score DECIMAL(4,2),
+    final_score DECIMAL(4,2),
+    PRIMARY KEY (course_id, component_id, student_id),
+    FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
+);
+
+CREATE TABLE users (
+  id INT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  fullname VARCHAR(255) not null
+);
+
 </code>
 </pre>
 Query for example data:
