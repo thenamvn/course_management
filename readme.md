@@ -143,7 +143,8 @@ INSERT INTO Courses (course_id, course_name) VALUES
 (1, 'Nguyên lí hệ điều hành'),
 (2, 'Lịch sử Đảng');
 
--- Thêm tài khoản admin vào học môn có id là 1 ( tức nghĩa là giáo viên admin sẽ dạy môn có id 1.web dùng để chỉ cho giáo viên truy cập dữ liệu môn học mà giáo viên đó dạy)
+-- Thêm tài khoản admin vào học môn có id là 1 
+-- ( tức nghĩa là giáo viên admin sẽ dạy môn có id 1.web dùng để chỉ cho giáo viên truy cập dữ liệu môn học mà giáo viên đó dạy)
 INSERT INTO UserCourses (user_id, course_id) VALUES ('admin', 1);
 
 -- Tạo các học phần cho môn học
