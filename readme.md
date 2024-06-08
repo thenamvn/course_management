@@ -10,6 +10,13 @@ Thông tin đăng nhập server sql ở file: .env
 
 Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các lệnh để lấy dữ liệu từ server sql rồi trả lại client.
 
+Cách chạy:
+-Có thể sử dụng extension trên Vscode để chạy wweb do web thuần html,js.![image](https://github.com/thenamvn/course_management/assets/57611937/151e9557-8f91-4011-b0bb-9693ad1daf42)
+
+-Thực hiện chạy server.js. (node server.js)
+
+*Lưu ý: Cần node.js
+
 Video Demo:
 
 https://github.com/thenamvn/course_management/assets/57611937/15e93330-c4b1-462e-b5db-256a0e1c69a6
