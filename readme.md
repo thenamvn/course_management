@@ -92,79 +92,84 @@ CREATE TABLE users (
 Query for example data:
 <pre>
 <code>
+-- Tạo tài khoản người dùng admin ( đây sẽ là tài khoản của giáo viên)
+INSERT INTO users (username, password, fullname) VALUES ('admin', 'admin', 'Administrator');
+
 -- Danh sách tổng toàn bộ các sinh viên
-INSERT INTO students (student_id, student_name, student_year) 
-VALUES 
-(1, 'Herman Simons', 2022),
-(2, 'Ravid Rouf', 2022),
-(3, 'Dukie Boulter', 2022),
-(4, 'Kendell Minshall', 2022),
-(5, 'Goldi Wallhead', 2022),
-(6, 'Iris Roughey', 2022),
-(7, 'Wendall Louca', 2022),
-(8, 'Jessalin Scrase', 2022),
-(9, 'Maud Dolbey', 2022),
-(10, 'Ira Nunn', 2022);
+INSERT INTO students (student_id, student_name, student_year) VALUES 
+(1, 'Penny Tytcomb', 2009),
+(2, 'Jae Rean', 1972),
+(3, 'Alfons Sango', 2000),
+(4, 'Murial Ponting', 2011),
+(5, 'Reagan Pail', 2010),
+(6, 'Donnie Skaife d''Ingerthorpe', 2003),
+(7, 'Marla Rosiello', 1986),
+(8, 'Casper Bewick', 2004),
+(9, 'Evey Kineton', 1996),
+(10, 'Binni Callard', 1995),
+(11, 'Dagny Schottli', 1997),
+(12, 'Verina Arstingall', 2005),
+(13, 'Levin Wreath', 2006),
+(14, 'Kalinda O''Hara', 2000),
+(15, 'Gleda Sands', 1999),
+(16, 'Phedra Brandenburg', 1994),
+(17, 'Fernandina Sowood', 1997),
+(18, 'Pierrette Litterick', 2011),
+(19, 'Stanly Seebright', 1955),
+(20, 'Yolanthe Kellitt', 1993),
+(21, 'Tonya Orhtmann', 2006),
+(22, 'Witty Ubsdall', 2007),
+(23, 'Jammal O''Donegan', 2007),
+(24, 'Marnia Devereux', 1997),
+(25, 'Flint Atack', 2008),
+(26, 'Gabrielle Sagg', 2009),
+(27, 'Haskel Cumpton', 2007),
+(28, 'Harrie Philipot', 2008),
+(29, 'Sherman Merali', 1984),
+(30, 'Richard McCadden', 2006),
+(31, 'Devi Manns', 1993),
+(32, 'Cortney Emm', 1999),
+(33, 'Gray Nathan', 2001),
+(34, 'Lori Haslock', 1988),
+(35, 'Jane Bursnall', 2006),
+(36, 'Adam Jenken', 2012),
+(37, 'Hi Lowe', 2008),
+(38, 'Ario Scay', 2011),
+(39, 'Brnaby Tidy', 2004),
+(40, 'Elisabet Freckleton', 2011);
 
--- Tạo user admin
-insert into users (username,password,fullname) values ('admin','admin','Administrator');
+-- Tạo các môn học
+INSERT INTO Courses (course_id, course_name) VALUES 
+(1, 'Nguyên lí hệ điều hành'),
+(2, 'Lịch sử Đảng');
 
--- Courses (tạo 1 môn học có tên là cse3033 với id 1)
-INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điều hành');
-INSERT INTO Courses (course_id, course_name) VALUES (2, 'Lịch sử Đảng');
+-- Thêm tài khoản admin vào học môn có id là 1 ( tức nghĩa là giáo viên admin sẽ dạy môn có id 1.web dùng để chỉ cho giáo viên truy cập dữ liệu môn học mà giáo viên đó dạy)
+INSERT INTO UserCourses (user_id, course_id) VALUES ('admin', 1);
 
--- CourseComponents (tạo ra các học phần 1,2,3 cho môn có course_id 1)
-INSERT INTO CourseComponents (course_id, component_id, component_name)
-VALUES
-    (1, 1, 'Học phần 1'),
-    (1, 2, 'Học phần 2'),
-    (1, 3, 'Học phần 3'),
-    (2, 1, 'Học phần 1'),
-    (2, 2, 'Học phần 2'),
-    (2, 3, 'Học phần 3');
+-- Tạo các học phần cho môn học
+INSERT INTO CourseComponents (course_id, component_id, component_name, course_credit) VALUES 
+(1, 1, 'Nguyên lí hp1', 2),
+(1, 2, 'Nguyên lí hp2', 2),
+(1, 3, 'Nguyên lí hp3', 2),
+(2, 1, 'LS Đảng hp1', 2),
+(2, 2, 'LS Đảng hp2', 2),
+(2, 3, 'LS Đảng hp3', 2);
 
--- Thêm 5 sinh viên vào môn 1 học phần 1
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(1, 1, 1),
-(1, 1, 2),
-(1, 1, 3),
-(1, 1, 4),
-(1, 1, 5);
+-- Thêm sinh viên vào học phần 1 của môn có id là 1
+INSERT INTO ComponentStudents (course_id, component_id, student_id) VALUES 
+(1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 1, 4), (1, 1, 5),
+(1, 1, 6), (1, 1, 7), (1, 1, 8), (1, 1, 9), (1, 1, 10),
+(1, 1, 11), (1, 1, 12), (1, 1, 13), (1, 1, 14), (1, 1, 15),
+(1, 1, 16), (1, 1, 17), (1, 1, 18), (1, 1, 19), (1, 1, 20),
+(1, 1, 21), (1, 1, 22), (1, 1, 23), (1, 1, 24), (1, 1, 25),
+(1, 1, 26), (1, 1, 27), (1, 1, 28), (1, 1, 29), (1, 1, 30),
+(1, 1, 31), (1, 1, 32), (1, 1, 33), (1, 1, 34), (1, 1, 35),
+(1, 1, 36), (1, 1, 37), (1, 1, 38), (1, 1, 39), (1, 1, 40);
 
--- Thêm 5 sinh viên vào môn 1 học phần 2
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(1, 2, 6),
-(1, 2, 7),
-(1, 2, 8),
-(1, 2, 9),
-(1, 2, 10);
+-- Thêm điểm cho sinh viên
+INSERT INTO StudentGrades (course_id, component_id, student_id, regular_score, midterm_score, final_score) VALUES 
+(1, 1, 1, 10, 8, 9.75);
 
--- Thêm 5 sinh viên vào môn 2 học phần 1
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(2, 1, 1),
-(2, 1, 2),
-(2, 1, 3),
-(2, 1, 4),
-(2, 1, 5);
-
--- Thêm 5 sinh viên vào môn 2 học phần 2
-INSERT INTO ComponentStudents (course_id, component_id, student_id) 
-VALUES 
-(2, 2, 6),
-(2, 2, 7),
-(2, 2, 8),
-(2, 2, 9),
-(2, 2, 10);
-
--- Thêm dữ liệu vào bảng Attendance
-INSERT INTO Attendance (course_id, component_id, student_id, attendance_date)
-VALUES 
-(1, 1, 1, '2024-05-10'),
-(1, 1, 2, '2024-05-10'),
-(2, 1, 1, '2024-05-10');
 </code>
 </pre>
 
