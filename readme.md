@@ -55,35 +55,6 @@ CREATE TABLE Attendance (
     attendance_date DATE NOT NULL,
     PRIMARY KEY (course_id, component_id, student_id, attendance_date),
     FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
-<<<<<<< HEAD
-=======
-);
-
-CREATE TABLE StudentGrades (
-    course_id INT NOT NULL,
-    component_id INT NOT NULL,
-    student_id INT NOT NULL,
-    regular_score DECIMAL(4,2),
-    midterm_score DECIMAL(4,2),
-    final_score DECIMAL(4,2),
-    PRIMARY KEY (course_id, component_id, student_id),
-    FOREIGN KEY (course_id, component_id, student_id) REFERENCES ComponentStudents(course_id, component_id, student_id)
-);
-
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(255) NOT NULL unique,
-  password VARCHAR(255) NOT NULL,
-  fullname VARCHAR(255) NOT NULL
-);
--- Bảng UserCourses để liên kết người dùng với các khóa học
-CREATE TABLE UserCourses (
-    user_id VARCHAR(255) NOT NULL,
-    course_id INT NOT NULL,
-    PRIMARY KEY (user_id, course_id),
-    FOREIGN KEY (user_id) REFERENCES Users(username),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
->>>>>>> 33c08059243a4d2c9e7b267ab0a582e5c729662b
 );
 
 CREATE TABLE StudentGrades (
@@ -122,6 +93,9 @@ VALUES
 (8, 'Jessalin Scrase', 2022),
 (9, 'Maud Dolbey', 2022),
 (10, 'Ira Nunn', 2022);
+
+-- Tạo user admin
+insert into users (username,password,fullname) values ('admin','admin','Administrator');
 
 -- Courses (tạo 1 môn học có tên là cse3033 với id 1)
 INSERT INTO Courses (course_id, course_name) VALUES (1, 'Nguyên lí hệ điều hành');
