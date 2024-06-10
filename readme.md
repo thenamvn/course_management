@@ -12,8 +12,7 @@ Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các l
 
 Cách chạy:
 -Có thể sử dụng extension trên Vscode để chạy wweb do web thuần html,js.![image](https://github.com/thenamvn/course_management/assets/57611937/456eb7c9-f6dc-4758-913a-381caabf9bd5)
-
-
+-Cài đặt cái thư viện cho code: npm install
 -Thực hiện chạy server.js. (node server.js)
 
 *Lưu ý: Cần node.js
