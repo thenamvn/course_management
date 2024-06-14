@@ -100,7 +100,7 @@ CREATE TABLE UserCourses (
 
 </code>
 </pre>
-Query for example data:
+Query for add new example data:
 <pre>
 <code>
 -- Tạo tài khoản người dùng admin ( đây sẽ là tài khoản của giáo viên)
@@ -185,7 +185,7 @@ INSERT INTO StudentGrades (course_id, component_id, student_id, regular_score, m
 </code>
 </pre>
 
-Drop Query:
+Drop Tables Data:
 <pre>
 <code>
 DROP TABLE IF EXISTS `webdatabase`.`componentstudents`, `webdatabase`.`courses`, `webdatabase`.`coursecomponents`, `webdatabase`.`attendance`, `webdatabase`.`students`;
