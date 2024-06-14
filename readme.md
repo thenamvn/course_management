@@ -8,7 +8,7 @@
 Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh.
 
 ## Thông tin đăng nhập server sql ở file: .env
-**File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)**
+**File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu - tương tác với mysql server)**
 
 **Full datacode : database.sql**
 
