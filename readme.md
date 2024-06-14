@@ -12,7 +12,9 @@ Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các l
 
 Cách chạy:
 -Có thể sử dụng extension trên Vscode để chạy wweb do web thuần html,js.![image](https://github.com/thenamvn/course_management/assets/57611937/456eb7c9-f6dc-4758-913a-381caabf9bd5)
+
 -Cài đặt cái thư viện cho code: npm install
+
 -Thực hiện chạy server.js. (node server.js)
 
 *Lưu ý: Cần node.js
@@ -24,6 +26,8 @@ https://github.com/thenamvn/course_management/assets/57611937/15e93330-c4b1-462e
 File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)
 
 Full datacode : database.sql
+
+Query tương tác với dữ liệu: exampleQuery.sql
 
 Cấu hình cơ sở dữ liệu (structure.sql):
 <pre>
