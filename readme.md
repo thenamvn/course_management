@@ -1,6 +1,5 @@
 # Bài tập lớn Nhập môn cơ sở dữ liệu
 
-![image](https://github.com/thenamvn/course_management/assets/57611937/1a003a62-095b-47f5-881a-9284e3beec3b)
 
 
 ![image](https://github.com/thenamvn/course_management/assets/57611937/16db4df6-d1e8-4b5c-918c-4218d26fe137)
@@ -8,7 +7,12 @@
 
 Cơ sở dữ liệu SQL để quản lý sinh viên, bao gồm các khóa học, thành phần khóa học, danh sách sinh viên cho từng thành phần khóa học và hồ sơ điểm danh.
 
-Thông tin đăng nhập server sql ở file: .env
+## Thông tin đăng nhập server sql ở file: .env
+**File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)**
+
+**Full datacode : database.sql**
+
+**Query tương tác với dữ liệu: exampleQuery.sql**
 
 Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các lệnh để lấy dữ liệu từ server sql rồi trả lại client.
 
@@ -25,11 +29,6 @@ Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các l
 
 https://github.com/thenamvn/course_management/assets/57611937/15e93330-c4b1-462e-b5db-256a0e1c69a6
 
-File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)
-
-**Full datacode : database.sql**
-
-**Query tương tác với dữ liệu: exampleQuery.sql**
 
 ## Cấu hình cơ sở dữ liệu (structure.sql):
 <pre>
