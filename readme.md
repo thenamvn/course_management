@@ -1,3 +1,5 @@
+# Bài tập lớn Nhập môn cơ sở dữ liệu
+
 ![image](https://github.com/thenamvn/course_management/assets/57611937/1a003a62-095b-47f5-881a-9284e3beec3b)
 
 
@@ -10,7 +12,7 @@ Thông tin đăng nhập server sql ở file: .env
 
 Website thực hiện gửi api về server.Máy chủ sẽ thực hiện các lệnh để lấy dữ liệu từ server sql rồi trả lại client.
 
-Cách chạy:
+## Cách chạy:
 -Có thể sử dụng extension trên Vscode để chạy wweb do web thuần html,js.![image](https://github.com/thenamvn/course_management/assets/57611937/456eb7c9-f6dc-4758-913a-381caabf9bd5)
 
 -Cài đặt cái thư viện cho code: npm install
@@ -19,17 +21,17 @@ Cách chạy:
 
 *Lưu ý: Cần node.js
 
-Video Demo:
+### Video Demo:
 
 https://github.com/thenamvn/course_management/assets/57611937/15e93330-c4b1-462e-b5db-256a0e1c69a6
 
 File máy chủ: server.js ( chứa các lệnh sql xử lí để lọc và lấy dữ liệu mà client yêu cầu)
 
-Full datacode : database.sql
+**Full datacode : database.sql**
 
-Query tương tác với dữ liệu: exampleQuery.sql
+**Query tương tác với dữ liệu: exampleQuery.sql**
 
-Cấu hình cơ sở dữ liệu (structure.sql):
+## Cấu hình cơ sở dữ liệu (structure.sql):
 <pre>
 <code>
 CREATE TABLE Courses (
@@ -100,7 +102,7 @@ CREATE TABLE UserCourses (
 
 </code>
 </pre>
-Query for add new example data:
+## Query for add new example data:
 <pre>
 <code>
 -- Tạo tài khoản người dùng admin ( đây sẽ là tài khoản của giáo viên)
@@ -185,9 +187,51 @@ INSERT INTO StudentGrades (course_id, component_id, student_id, regular_score, m
 </code>
 </pre>
 
-Drop Tables Data:
+## Query tương tác với cơ sở dữ liệu:
 <pre>
 <code>
-DROP TABLE IF EXISTS `webdatabase`.`componentstudents`, `webdatabase`.`courses`, `webdatabase`.`coursecomponents`, `webdatabase`.`attendance`, `webdatabase`.`students`;
+# Thông tin tài khoản giáo viên đảm nhiệm môn học
+select * from UserCourses;
+
+#Bảng thông tin user
+select * from users;
+
+SELECT * FROM users WHERE username = 'admin';
+
+#Danh sách sinh viên môn 1 học phần 1 ( điểm danh)
+SELECT 
+    s.student_id,
+    s.student_name,
+    cs.course_id,
+    cs.component_id,
+    a.attendance_date,
+    CASE WHEN a.attendance_date IS NOT NULL THEN 1 ELSE 0 END AS attended
+FROM 
+    students s
+JOIN 
+    componentstudents cs ON s.student_id = cs.student_id
+LEFT JOIN 
+    Attendance a ON s.student_id = a.student_id 
+    AND cs.course_id = a.course_id 
+    AND cs.component_id = a.component_id
+WHERE 
+    cs.course_id = 1
+    AND cs.component_id = 1;
+
+# Danh sách điểm số sinh viên theo học phần
+SELECT 
+      Students.student_id,
+      Students.student_name,
+      StudentGrades.regular_score,
+      StudentGrades.midterm_score,
+      StudentGrades.final_score
+    FROM 
+      Students
+    INNER JOIN 
+      ComponentStudents ON Students.student_id = ComponentStudents.student_id
+    LEFT JOIN 
+      StudentGrades ON Students.student_id = StudentGrades.student_id AND ComponentStudents.course_id = StudentGrades.course_id AND ComponentStudents.component_id = StudentGrades.component_id
+    WHERE 
+      ComponentStudents.course_id = 1 AND ComponentStudents.component_id = 1;
 </code>
 </pre>
